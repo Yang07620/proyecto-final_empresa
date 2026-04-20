@@ -4,6 +4,12 @@
 
 - Yang Zhang
 
+# Objetivos
+
+El objetivo del proyecto es crear una página web para corregir CV con la ayuda de la IA y de un profesional, con el fin de que más personas puedan conseguir trabajo.
+
+# Explicación del proyecto
+
 
 
 ```mermaid
