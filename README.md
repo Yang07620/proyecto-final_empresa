@@ -22,5 +22,5 @@ gantt
   Tarea 6             :f1, 2026-05-25, 2026-05-31
 
   section Fase 7
-  Tarea 7             :g1, 2026-06-01
+  Tarea 7 (Final)     :milestone, g1, 2026-06-01, 0d
 ```
