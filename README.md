@@ -11,4 +11,16 @@ gantt
 
   section Fase 3
   Tarea 3             :c1, 2026-05-04, 2026-05-10
+
+  section Fase 4
+  Tarea 4             :c1, 2026-05-11, 2026-05-17
+
+  section Fase 5
+  Tarea 5             :c1, 2026-05-18, 2026-05-24
+
+  section Fase 6
+  Tarea 6             :c1, 2026-05-25, 2026-05-31
+
+  section Fase 7
+  Tarea 7             :c1, 2026-06-01
 ```
