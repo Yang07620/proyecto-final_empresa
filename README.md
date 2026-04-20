@@ -1,20 +1,26 @@
-## Planificació del projecte (Gantt)
+## Planificación del proyecto (Gantt)
 
 ```mermaid
 gantt
-  title Planificació del projecte
+  title Planificación del proyecto web
   dateFormat YYYY-MM-DD
 
-  section Fase 1: Anàlisi
-  Anàlisi de requisits     :a1, 2026-05-01, 4d
-  Disseny funcional        :a2, after a1, 3d
+  section Organización inicial
+  Planificación y documentación        :a1, 2026-04-20, 7d
 
-  section Fase 2: Desenvolupament
-  Implementació backend    :b1, after a2, 6d
-  Implementació frontend   :b2, after b1, 6d
-  Proves funcionals        :b3, after b2, 4d
+  section Estructura web
+  Estructura HTML y carpetas           :a2, 2026-04-27, 7d
 
-  section Fase 3: Tancament
-  Desplegament producció   :c1, after b3, 3d
-  Documentació i defensa   :c2, after c1, 5d
+  section Diseño página principal
+  Diseño página inicio (CSS/JS)        :a3, 2026-05-04, 7d
+
+  section Desarrollo servicios
+  Diseño páginas de servicios          :a4, 2026-05-11, 7d
+
+  section Finalización
+  Revisión y mejoras                   :a5, 2026-05-18, 5d
+  Documentación y preparación entrega  :a6, after a5, 7d
+
+  section Entrega
+  Entrega final                        :milestone, a7, 2026-06-01, 1d
 ```
