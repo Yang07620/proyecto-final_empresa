@@ -4,10 +4,8 @@ gantt
   dateFormat YYYY-MM-DD
   section Fase 1
   Tarea 1             :a1, 2026-04-20, 7d
-  Tarea 2             :a2, after a1, 7d
   section Fase 2
-  Desenvolupament app :b1, 2026-05-08, 10d
-  Proves              :b2, after b1, 3d
+  Tarea 2             :b1, 2026-04-6, 7d
   section Fase 3
   Desplegament        :c1, 2026-05-22, 4d
   Memòria i defensa   :c2, 2026-05-27, 5d
