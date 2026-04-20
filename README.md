@@ -139,14 +139,4 @@ Preparación final.
 
 ## 🟦 Tarea 7 (1 de junio)
 
-### Objetivo
-Entrega final.
-
-### Actividades
-- Entrega del proyecto.
-- Revisión final.
-
----
-
-## 🚀 Estado del proyecto
-En progreso...
+- Final
