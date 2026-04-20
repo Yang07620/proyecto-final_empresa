@@ -1,3 +1,11 @@
+# JobReady CV
+
+# Integrantes del proyecto
+
+- Yang Zhang
+
+
+
 ```mermaid
 gantt
   title Planificació del projecte
