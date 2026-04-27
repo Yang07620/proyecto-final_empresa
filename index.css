@@ -9,6 +9,10 @@ body {
     font-weight: 500;
 }
 
+.center-ali {
+    align-items: center;
+}
+
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -93,18 +97,23 @@ ul {
 /* ----------------------- */
 
 /* Barra lateral */
+
+.barra h2 {
+    text-align: center;
+}
+
 .barra {
   position: fixed;
   top: 0;
   right: 0;
   width: 300px;
   height: 100%;
-  background: #e6f8ff;
-  color: rgb(0, 0, 0);
-  padding: 100px 0px 0px 15px;
+  background: #e6f8ff25;
+  color: rgb(255, 255, 255);
+  padding: 130px 15px 0px 15px;
   border-bottom-left-radius: 10px;
 
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.075);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.178);
 
   
   /* Oculta fuera de pantalla */
@@ -118,6 +127,32 @@ ul {
 .barra.activa {
   transform: translateX(0);
 }
+
+#plan1, #plan2 {
+    width: 200px;
+    height: 270px;
+
+    border-radius: 10px;
+}
+
+.barra button {
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 13px 16px;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    border: none;
+    background-color: rgb(0, 174, 255);
+    color: white;
+}
+
+.barra button:hover {
+    background-color: rgb(0, 140, 210);
+    transform: translateY(-2px);
+}
+
 
 /* Continguts de Nav */
 
@@ -216,7 +251,7 @@ ul {
     background-image: url(img/fondo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 10vh;
 
     padding: 250px 0px 300px 100px;
 }
@@ -268,6 +303,10 @@ main p {
     color: rgb(241, 241, 241);
 }
 
+.perque-container {
+    height: 500px;
+    border: 1px solid red;
+}
 /* FOOTER */
 
 footer {
