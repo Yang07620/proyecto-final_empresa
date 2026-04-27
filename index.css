@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+.flex-1 {
+    display: flex;
+    align-items: center;
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+/* ------------------------------------------------ */
+
+#logo {
+    width: 145px;
+    height: 145px;
+}
+
+/* Continguts de Nav */
+
+.container-nav {
+    /* border: 1px solid black; */
+    
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px 15px;
+
+    background-color: rgb(255, 255, 255);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Llista de navegació */
+#ul-nav {
+    display: flex;
+
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
+#ul-nav li {
+    list-style: none;
+    
+}
+
+#ul-nav li a {
+    text-decoration: none;
+
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+
+    position: relative;
+}
+
+#ul-nav li a::after {
+    content: "";
+    position: absolute;
+
+    background: rgb(0, 174, 255);
+    transition: width 0.3s ease;
+    left: 0;
+    bottom: -5px;
+
+    width: 0;
+    height: 2px;
+}
+
+#ul-nav li a:hover::after {
+    width: 100%;
+}
+
+
+/* Login */
+
+.container-login {
+    width: fit-content;
+    height: 30px;
+
+    /* border: 1px solid blue; */
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-login button {
+    font-family: "Montserrat", sans-serif;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    
+    padding: 5px;
+    background-color: white;
+
+    font-size: 16px;
+}
+
+.container-login button:hover {
+    background-color: rgba(223, 220, 220, 0.548);
+
+    color: rgb(31, 26, 99);
+}
+
+/* ------------------ */
+
+/* MAIN */
+
+.container-main {
+    background-image: url(img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+
+    width: 1920px;
+    height: 1080px;
+}
+
+/* FOOTER */
+
+footer {
+    border: 1px solid red;
+    height: 270px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-footer {
+    width: 1650px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+/* --cartas-footer */
+
+.container-footer ul {
+    list-style: none;
+}
+
+.container-footer a {
+    text-decoration: none;
+}
+
+.carta-1-footer {
+
+}
+
+
