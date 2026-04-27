@@ -9,6 +9,11 @@ body {
     font-weight: 500;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-1 {
     display: flex;
     align-items: center;
@@ -155,16 +160,36 @@ footer {
 
 /* --cartas-footer */
 
+
 .container-footer ul {
     list-style: none;
 }
 
 .container-footer a {
     text-decoration: none;
+
+    color: rgb(0, 0, 0);
 }
 
-.carta-1-footer {
+.container-cartas-footer {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
 
+    border: 1px solid green;
+
+    padding: 10px;
+}
+
+.cartas-estructura {
+    display: flex;
+    flex-direction: column;
+
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    padding: 15px;
+
+    background-color: rgb(216, 229, 255);
 }
 
 
