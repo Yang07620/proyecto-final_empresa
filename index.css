@@ -171,6 +171,10 @@ footer {
     color: rgb(0, 0, 0);
 }
 
+.container-footer a:hover {
+    color: aquamarine;
+}
+
 .container-cartas-footer {
     display: flex;
     width: fit-content;
