@@ -26,11 +26,40 @@ body {
 .gap-10 {
     gap: 10px;
 }
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.lexend {
+    font-family: "Lexend", sans-serif;
+}
+
+.lexend-giga {
+    font-family: "Lexend Giga", sans-serif;
+}
 /* ------------------------------------------------ */
 
 #logo {
     width: 145px;
     height: 145px;
+}
+
+#logo-footer {
+    width: 120px;
+    height: 120px;
+}
+
+#job {
+    color: rgb(82, 157, 255);
+}
+
+#ready {
+    color: rgb(110, 110, 110);
 }
 
 /* Continguts de Nav */
@@ -64,20 +93,14 @@ body {
     padding: 0;
 }
 
-#ul-nav li {
-    list-style: none;
-    
-}
-
 #ul-nav li a {
-    text-decoration: none;
-
     color: rgb(0, 0, 0);
     font-size: 16px;
 
     position: relative;
 }
 
+/* !!!!!!!!!!!--AI */
 #ul-nav li a::after {
     content: "";
     position: absolute;
@@ -144,35 +167,34 @@ body {
 /* FOOTER */
 
 footer {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 270px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.container-footer {
+    width: 1650px;
+    height: 250px;
+    /* border: 1px solid black; */
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container-footer {
-    width: 1650px;
-    height: 250px;
-    border: 1px solid black;
-}
-
 /* --cartas-footer */
 
-
-.container-footer ul {
-    list-style: none;
-}
-
 .container-footer a {
-    text-decoration: none;
-
     color: rgb(0, 0, 0);
 }
 
 .container-footer a:hover {
-    color: aquamarine;
+    color: rgb(59, 56, 255);
 }
 
 .container-cartas-footer {
@@ -180,9 +202,9 @@ footer {
     width: fit-content;
     height: fit-content;
 
-    border: 1px solid green;
+    /* border: 1px solid green; */
 
-    padding: 10px;
+    padding: 15px;
 }
 
 .cartas-estructura {
@@ -194,6 +216,25 @@ footer {
     padding: 15px;
 
     background-color: rgb(216, 229, 255);
+    width: 240px;
 }
 
+.container-expli-footer {
+    width: 520px;
+    height: 173px;
+
+    /* border: 1px solid black; */
+}
+
+#footer-normes a {
+    color: black;
+}
+
+#footer-normes a:hover {
+    color: rgb(59, 56, 255);
+}
+
+.container-footer span {
+    font-family: "Lexend", sans-serif;
+}
 
