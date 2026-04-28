@@ -251,7 +251,7 @@ ul {
     background-image: url(img/fondo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 10vh;
+    min-height: 100vh;
 
     padding: 250px 0px 300px 100px;
 }
