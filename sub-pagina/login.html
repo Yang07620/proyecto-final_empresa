@@ -13,13 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div>
-        <div>
-            <form action="">
-        
-            </form>
-            <button onclick="login()">Login con GitHub</button>
+<body class="display-flex ali-center just-center">
+    <div class="panel-login">
+        <h2>Benvinguts al Jobs<span class="ready">Ready</span><span class="cv">CV</span></h2>
+        <form action="">
+            
+        </form>
+        <div class="button-login-menu">
+            <button onclick="login()" class="button-github display-flex ali-center just-center gap-20">
+                <img src="../img/img-login/github.png" alt="" id="logo-github-login">Continuar amb GitHub
+            </button>
         </div>
     </div>
 
@@ -41,5 +44,6 @@
             if (error) console.log(error)
         }
     </script>
+    <!-- ------------------- -->
 </body>
 </html>

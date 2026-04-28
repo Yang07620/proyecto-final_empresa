@@ -14,3 +14,76 @@ body {
 
 /* -------------------------- */
 
+/* Panel login */
+
+/* --------------------------- */
+
+.panel-login {
+    /* border: 1px solid black; */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    width: 460px;
+    height: 600px;
+
+    background-color: white;
+}
+
+.button-login-menu {
+    width: fit-content;
+    height: 250px;
+
+    border: 1px solid black;
+}
+/* ------------------------- */
+
+/* Lletres */
+
+/* ----------------------- */
+
+.panel-login h2 {
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    word-spacing: 5px;
+
+    color: #2d3639;
+}
+
+.ready {
+    color: rgb(101, 139, 196);
+}
+
+.cv {
+    color: rgb(184, 184, 184);
+}
+/* --------------------------- */
+
+/* Button de registrar amb github */
+
+/* --------------------------------*/
+
+.button-github {
+    cursor: pointer;
+
+    width: 380px;
+    height: 50px;
+
+    font-family: "Inter", sans-serif;
+
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    
+    transition: all 0.25s ease;
+}
+
+.button-github:hover {
+    border: 1px solid #a7a7a7;
+    background-color: rgb(249, 253, 255);
+}
+
+#logo-github-login {
+    padding-bottom: 2px;
+}
+/* ---------------------------- */
