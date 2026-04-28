@@ -1,383 +1,98 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-}
-
-.center-ali {
-    align-items: center;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.flex-1 {
-    display: flex;
-    align-items: center;
-}
-
-.gap-30 {
-    gap: 30px;
-}
-
-.gap-10 {
-    gap: 10px;
-}
-
-.gap-50 {
-    gap: 50px;
-}
-
-a {
+    list-style: none;
     text-decoration: none;
 }
 
-ul {
-    list-style: none;
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, #dbeeff);
 }
 
-.lexend {
-    font-family: "Lexend", sans-serif;
-}
+/* LOGO */
 
-.lexend-giga {
-    font-family: "Lexend Giga", sans-serif;
-}
-
-.oswald {
-    font-family: "Oswald", sans-serif;
-}
-
-.miranda {
-    font-family: "Miranda Sans", sans-serif;
-}
-/* ------------------------------------------------ */
+/* ---------------------- */
 
 #logo {
-    width: 145px;
-    height: 145px;
+    width: 150px;
+    height: 25px;
 }
 
-#logo-footer {
-    width: 120px;
-    height: 120px;
+/* -------------------------- */
+
+/* Enllanç de la navegació */
+
+/* --------------------------- */
+
+.container-list-button {
+    width: 800px;
 }
 
-#job {
-    color: rgb(82, 157, 255);
-}
-
-#ready {
-    color: rgb(110, 110, 110);
-}
-
-#IA {
-    color: rgb(82, 157, 255);
-}
-
-#revisat {
-    color: rgb(135, 221, 255);
-}
-
-#img-home {
-    position: absolute;
-
-    padding: 260px 0px 0px 0px;
-    width: 900px;
-    height: 490px;
-}
-
-/* ----------------------- */
-
-/* Barra lateral */
-
-.barra h2 {
-    text-align: center;
-}
-
-.barra {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
-  background: #e6f8ff25;
-  color: rgb(255, 255, 255);
-  padding: 130px 15px 0px 15px;
-  border-bottom-left-radius: 10px;
-
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.178);
-
-  
-  /* Oculta fuera de pantalla */
-  transform: translateX(100%);
-  
-  /* Animación */
-  transition: transform 0.3s ease;
-}
-
-/* Estado visible */
-.barra.activa {
-  transform: translateX(0);
-}
-
-#plan1, #plan2 {
-    width: 200px;
-    height: 270px;
-
-    border-radius: 10px;
-}
-
-.barra button {
-    font-size: 18px;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 13px 16px;
-    transition: background-color 0.25s ease, transform 0.2s ease;
-    border: none;
-    background-color: rgb(0, 174, 255);
-    color: white;
-}
-
-.barra button:hover {
-    background-color: rgb(0, 140, 210);
-    transform: translateY(-2px);
-}
-
-
-/* Continguts de Nav */
-
-.container-nav {
-    /* border: 1px solid black; */
-    
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 8px 15px;
-
-    background-color: rgb(255, 255, 255);
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-/* Llista de navegació */
-#ul-nav {
-    display: flex;
-
-    width: fit-content;
-    margin: 0;
-    padding: 0;
-}
-
-#ul-nav li a {
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-
-    position: relative;
-}
-
-/* !!!!!!!!!!!--AI */
-#ul-nav li a::after {
-    content: "";
-    position: absolute;
-
-    background: rgb(0, 174, 255);
-    transition: width 0.3s ease;
-    left: 0;
-    bottom: -5px;
-
-    width: 0;
-    height: 2px;
-}
-
-#ul-nav li a:hover::after {
-    width: 100%;
-}
-
-
-/* Login */
-
-.container-login {
-    width: fit-content;
-    height: 30px;
-
-    /* border: 1px solid blue; */
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.container-login button {
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    
-    padding: 5px;
-    background-color: white;
-    border: 2px solid #2d3639;
-    font-size: 16px;
-    padding: 10px 5px;
-}
-
-.container-login button:hover {
-    background-color: rgba(223, 220, 220, 0.548);
-
-    color: rgb(31, 26, 99);
-}
-
-/* ------------------ */
-
-/* MAIN */
-
-.container-main {
-    background-image: url(img/fondo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-
-    padding: 250px 0px 300px 100px;
-}
-
-.container-main h1 {
-    font-size: 65px;
-    color: white
-}
-
-.main-titulo {
-    /* border: 1px solid black; */
-    width: 850px;
-    height: fit-content;
-}
-
-#btn-cv, #toggleBtn {
-    font-size: 18px;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 13px 16px;
-    transition: background-color 0.25s ease, transform 0.2s ease;
-}
-
-#btn-cv {
-    color: white;
-    border: 2px solid white;
-    background-color: rgb(0, 174, 255);
-}
-
-#btn-cv:hover {
-    background-color: rgb(0, 140, 210);
-    transform: translateY(-2px);
-}
-
-#toggleBtn {
-    color: white;
-    background-color: rgb(0, 119, 255);
-    border: 2px solid white;
-}
-
-#toggleBtn:hover {
-    background-color: rgb(0, 140, 210);
-    transform: translateY(-2px);
-}
-
-main p {
-    color: rgb(241, 241, 241);
-}
-
-.perque-container {
-    height: 500px;
-    border: 1px solid red;
-}
-/* FOOTER */
-
-footer {
-    /* border: 1px solid red; */
-    height: 270px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+nav {
     padding: 20px;
+
+    /* border: 1px solid black; */
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }
 
-.container-footer {
-    width: 1650px;
-    height: 250px;
-    /* border: 1px solid black; */
-
+nav li {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
-/* --cartas-footer */
+nav ul li a {
+    color: #384347;
 
-.container-footer a {
-    color: rgb(0, 0, 0);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
 }
 
-.container-footer a:hover {
-    color: rgb(59, 56, 255);
-}
-
-.container-cartas-footer {
-    display: flex;
-    width: fit-content;
-    height: fit-content;
-
-    /* border: 1px solid green; */
-
-    padding: 15px;
-}
-
-.cartas-estructura {
-    display: flex;
-    flex-direction: column;
-
-    /* border: 1px solid black; */
-    border-radius: 15px;
-    padding: 15px;
-
-    background-color: rgb(216, 229, 255);
-    width: 240px;
-}
-
-.container-expli-footer {
-    width: 520px;
-    height: 173px;
-
-    /* border: 1px solid black; */
-}
-
-#footer-normes a {
+nav ul li a:hover {
     color: black;
 }
 
-#footer-normes a:hover {
-    color: rgb(59, 56, 255);
+/* --------------------------------- */
+
+/* Button login i inicair */
+
+/* ------------------------------ */
+
+.but-login a {
+    color: #384347;
+    font-weight: 500;
 }
 
-.container-footer span {
-    font-family: "Lexend", sans-serif;
+.but-iniciar a {
+    color: white;
+    font-weight: 500;
 }
 
+.but-login {
+    border: none;
+    padding: 8px 15px;
+
+    background-color: transparent;
+    border: 2px solid #384347;
+    border-radius: 5px;
+
+    font-family: "Rubik", sans-serif;
+}
+
+.but-iniciar {
+    background-color: rgb(47, 113, 255);
+    border: none;
+    padding: 8px 15px;
+
+    font-family: "Rubik", sans-serif;
+    border-radius: 5px;
+}
+
+.but-login:hover {
+    background-color: #d2d9dbd5;
+}
+
+.but-iniciar:hover {
+    background-color: #88a5ad;
+}
