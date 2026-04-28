@@ -26,33 +26,16 @@
             </ul>
 
             <div class="display-flex gap-10">
-                <button class="but-login"><a href="">Login</a></button>
+                <button class="but-login"><a href="sub-pagina/login.html">Login</a></button>
                 <button class="but-iniciar"><a href="">Iniciar</a></button>
             </div>
         </div>
     </nav>
 
     <main>
-        <button onclick="login()">Login con GitHub</button>
+        
     </main>
 
     <footer></footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script>
-        const client = window.supabase.createClient(
-            "https://ienbdthevfgjglymjgfa.supabase.co",
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllbmJkdGhldmZnamdseW1qZ2ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzg0MzEsImV4cCI6MjA5Mjk1NDQzMX0.O1Vhd6F_okqCmm-lKvajJEz0dcUel1DKdw5wWEEKS_M"
-        )
-
-        async function login() {
-            const { data, error } = await client.auth.signInWithOAuth({
-            provider: 'github'
-            })
-
-            if (error) console.log(error)
-        }
-    </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, #eaf4ff);
+}
+
+/* LOGO */
+
+/* ---------------------- */
+
+#logo {
+    width: 150px;
+    height: 25px;
+}
+
+/* -------------------------- */
+
