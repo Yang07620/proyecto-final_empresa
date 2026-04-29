@@ -16,19 +16,48 @@
 <body class="display-flex ali-center just-center">
     <div class="panel-login">
         <h2>Benvinguts al Jobs<span class="ready">Ready</span><span class="cv">CV</span></h2>
-        <form action="">
-            
-        </form>
-        <div class="button-login-menu">
-            <button onclick="login()" class="button-github display-flex ali-center just-center gap-20">
-                <img src="../img/img-login/github.png" alt="" id="logo-github-login">Continuar amb GitHub
+
+        <div class="button-login-menu display-flex ali-center column space-bet">
+            <!-- Login amb Github (Supabase) -->
+            <button onclick="login()" class="button-proveidor display-flex ali-center just-center gap-20">
+                <img src="../img/img-login/github.png" alt="" id="logo-github-login"><span class="mida-text">Continuar amb GitHub</span>
+            </button>
+
+            <!-- Login amb Discord (Supabase) -->
+            <button onclick="loginDiscord()" class="button-proveidor display-flex ali-center just-center gap-20">
+                <img src="../img/img-login/discordia.png" alt=""><span class="mida-text">Continuar amb Discord</span>
+            </button>
+
+            <!-- Login amb X (Supabase) -->
+            <button onclick="loginX()"class="button-proveidor display-flex ali-center just-center gap-20">
+                <img src="../img/img-login/gorjeo (1).png" alt=""><span class="mida-text">Continuar amb X</span>
             </button>
         </div>
+        
+        <span class="Inter-F">Log in</span>
+
+        <form action="">
+            <div class="display-flex ali-center">
+                <label for="user">
+                    <img src="../img/img-login/correo.png" alt="">
+                </label>
+                <input type="email" name="" id="user" placeholder="Adreça de correu electrònic">
+            </div>
+
+            <div>
+                <label for="passwd">
+                    <img src="../img/img-login/contrasena.png" alt="">
+                </label>
+                <input type="password" id="passwd" placeholder="Contrasenya">
+            </div>
+        </form>
     </div>
 
 
-    <!-- Login amb Github (Supabase) -->
+    <!-- Vinculació a supabase-->
+     
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
     <script>
         const client = window.supabase.createClient(
@@ -39,6 +68,22 @@
         async function login() {
             const { data, error } = await client.auth.signInWithOAuth({
             provider: 'github'
+            })
+
+            if (error) console.log(error)
+        }
+
+        async function loginDiscord() {
+            const { data, error } = await client.auth.signInWithOAuth({
+            provider: 'discord'
+            })
+
+            if (error) console.log(error)
+        }
+
+        async function loginX() {
+            const { data, error } = await client.auth.signInWithOAuth({
+            provider: 'x'
             })
 
             if (error) console.log(error)

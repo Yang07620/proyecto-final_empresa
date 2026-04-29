@@ -23,6 +23,10 @@
 .space-bet {
     justify-content: space-between;
 }
+
+.column {
+    flex-direction: column;
+}
 /* Propietats de GAP */
 
 /* -------------------------- */
@@ -48,3 +52,16 @@
 }
 
 /* ----------------------- */
+
+/* Fonts */
+/* --------------------------- */
+
+.Inter-F {
+    font-family: "Inter", sans-serif;
+}
+
+.Rubik-F {
+    font-family: "Rubik", sans-serif;
+}
+
+/* ------------------------- */
