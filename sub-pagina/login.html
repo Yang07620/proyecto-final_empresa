@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar sessió</title>
     <link rel="stylesheet" href="../css-carpeta/login.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
 
@@ -14,8 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body class="display-flex ali-center just-center">
-    <div class="panel-login">
-        <h2>Benvinguts al Jobs<span class="ready">Ready</span><span class="cv">CV</span></h2>
+    <div class="panel-login display-flex column ali-center just-center gap-20">
+        <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
+
+        <span class="Inter-F color-gris pad-10-right">Iniciar ràpida</span>
 
         <div class="button-login-menu display-flex ali-center column space-bet">
             <!-- Login amb Github (Supabase) -->
@@ -34,21 +36,31 @@
             </button>
         </div>
         
-        <span class="Inter-F">Log in</span>
+        <span class="Inter-F color-gris">Amb una compte</span>
 
-        <form action="">
-            <div class="display-flex ali-center container-input">
-                <input type="email" name="" class="mida-input-user-pass Inter-F">
+        <form action="" class="display-flex column gap-30 ali-center">
+            <div class="display-flex column gap-20">
+                <div class="button-proveidor display-flex ali-center just-center gap-10">
+                    <label for="user-mail">
+                        <img src="../img/img-login/correo.png" alt="" class="pad-4">
+                    </label>
+                    <input type="email" class="Inter-F input-box" placeholder="Adreça de correu electrònic" id="user-mail">
+                </div>
+
+                <div class="button-proveidor display-flex ali-center just-center gap-10">
+                    <label for="user-pass">
+                        <img src="../img/img-login/ojo-cerrado.png" alt="" class="pad-4">
+                    </label>
+                    <input type="password" class="Inter-F input-box" placeholder="Contrasenya" id="user-pass">
+                </div>
             </div>
 
-            <div>
-                <input type="password">
+            <div class="container-link Inter-F display-flex gap-20">
+                <a href="../sub-pagina/registrar.html">Registrar</a>
+                <a href="">Oblidar la contrasenya</a>
             </div>
 
-            <a href="../sub-pagina/registrar.html">Registrar</a>
-            <a href="">Oblidar la contrasenya</a>
-
-            <button type="button" onclick="loginEmail()">Iniciar sessió</button>
+            <button type="button" onclick="loginEmail()" class="btn-sessio">Iniciar sessió</button>
         </form>
     </div>
 
@@ -62,7 +74,10 @@
 
         async function login() {
             const { data, error } = await client.auth.signInWithOAuth({
-            provider: 'github'
+                provider: 'github',
+                options: {
+                    redirectTo: window.location.origin + "/index.html"
+                }
             })
 
             if (error) console.log(error)
@@ -70,7 +85,10 @@
 
         async function loginDiscord() {
             const { data, error } = await client.auth.signInWithOAuth({
-            provider: 'discord'
+                provider: 'discord',
+                options: {
+                    redirectTo: window.location.origin + "/index.html"
+                }
             })
 
             if (error) console.log(error)
@@ -78,7 +96,10 @@
 
         async function loginX() {
             const { data, error } = await client.auth.signInWithOAuth({
-            provider: 'x'
+                provider: 'x',
+                options: {
+                    redirectTo: window.location.origin + "/index.html"
+                }
             })
 
             if (error) console.log(error)
