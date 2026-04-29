@@ -96,6 +96,16 @@ body {
 }
 
 .mida-input-user-pass {
-    
+    outline: none;
+    border: none;
 }
+
+.container-input {
+    width: 380px;
+    height: 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+
 /* ---------------------------- */
