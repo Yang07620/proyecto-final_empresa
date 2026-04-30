@@ -47,39 +47,42 @@
     <script src="supabase.js"></script>
 
     <script>
-        async function checkUser() {
-            const { data: { session } } = await client.auth.getSession()
-
+        async function loadUser() {
             const userInfo = document.getElementById("user-info")
 
+            const { data: { session } } = await client.auth.getSession()
+
+            // ❌ no login
             if (!session) {
-                // ❌ NO LOGUEADO
                 userInfo.innerHTML = `
                     Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
                 `
-            } else {
-                const user = session.user
-
-                // 🔥 coger username desde profiles
-                const { data: profile, error } = await client
-                    .from('profiles')
-                    .select('username')
-                    .eq('id', user.id)
-                    .single()
-
-                let name = user.email // fallback
-
-                if (profile && profile.username) {
-                    name = profile.username
-                }
-
-                // ✅ LOGUEADO
-                userInfo.innerHTML = `
-                    Hola <a href="sub-pagina/userprofile.html">${name}</a>!
-                `
+                return
             }
+
+            const user = session.user
+
+            // 🔥 buscar username
+            const { data: profile } = await client
+                .from('profiles')
+                .select('username')
+                .eq('id', user.id)
+                .maybeSingle()
+
+            // ❌ si no hay username → tratar como no logueado
+            if (!profile?.username) {
+                userInfo.innerHTML = `
+                    Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
+                `
+                return
+            }
+
+            // ✅ solo username válido
+            userInfo.innerHTML = `
+                <a href="sub-pagina/userprofile.html">Hola ${profile.username}</a>
+            `
         }
-        checkUser()   
+        loadUser()
     </script>
 </body>
 </html>
