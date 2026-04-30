@@ -47,10 +47,10 @@
     <script src="supabase.js"></script>
 
     <script>
-        async function loadUser() {
-            const userInfo = document.getElementById("user-info")
-
+        async function checkUser() {
             const { data: { session } } = await client.auth.getSession()
+
+            const userInfo = document.getElementById("user-info")
 
             if (!session) {
                 userInfo.innerHTML = `
@@ -59,22 +59,26 @@
                 return
             }
 
-            const user = session.user
+            // buscar username en profiles
+            const { data, error } = await client
+                .from("profiles")
+                .select("username")
+                .eq("id", session.user.id)
+                .single()
 
-            const { data: profile } = await client
-                .from('profiles')
-                .select('username')
-                .eq('id', user.id)
-                .maybeSingle()
+            // si no tiene username → onboarding
+            if (!data || !data.username) {
+                window.location.href = "sub-pagina/registrar2.html"
+                return
+            }
 
-            const name = profile?.username
-
+            // mostrar nombre
             userInfo.innerHTML = `
-                <a href="sub-pagina/userprofile.html">Hola ${name}</a>
+                Hola <a href="sub-pagina/userprofile.html">${data.username}</a>!
             `
         }
 
-        loadUser()
+        checkUser()
     </script>
 </body>
 </html>
