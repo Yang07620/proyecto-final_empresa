@@ -33,5 +33,38 @@
             </form>
         </div>
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../supabase.js"></script>
+    <script>
+        async function guardarUsername() {
+            const username = document.getElementById("nom-user").value
+
+            if (!username) {
+                alert("Es obligatorio poner username")
+                return
+            }
+
+            const { data: { session } } = await client.auth.getSession()
+
+            const user = session.user
+
+            const { error } = await client
+                .from('profiles')
+                .upsert([
+                    {
+                        id: user.id,
+                        username: username
+                    }
+                ])
+
+            if (error) {
+                alert(error.message)
+            } else {
+                window.location.href = "../index.html"
+            }
+        }
+    </script>
 </body>
 </html>
