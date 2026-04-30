@@ -16,6 +16,11 @@
 <body>
     <nav class="display-flex space-bet ali-center">
         <a href=""><img src="img/index-img/transparent-logo.png" alt="" id="logo"></a>
+
+        <span id="user-info">
+            Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
+        </span>
+
         <div class="display-flex space-bet container-list-button">
             <ul class="display-flex gap-50">
                 <li><a href="">Inici</a></li>
@@ -44,9 +49,37 @@
     <script>
         async function checkUser() {
             const { data: { session } } = await client.auth.getSession()
-        }
 
-        checkUser()
+            const userInfo = document.getElementById("user-info")
+
+            if (!session) {
+                // ❌ NO LOGUEADO
+                userInfo.innerHTML = `
+                    Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
+                `
+            } else {
+                const user = session.user
+
+                // 🔥 coger username desde profiles
+                const { data: profile, error } = await client
+                    .from('profiles')
+                    .select('username')
+                    .eq('id', user.id)
+                    .single()
+
+                let name = user.email // fallback
+
+                if (profile && profile.username) {
+                    name = profile.username
+                }
+
+                // ✅ LOGUEADO
+                userInfo.innerHTML = `
+                    Hola <a href="sub-pagina/userprofile.html">${name}</a>!
+                `
+            }
+        }
+        checkUser()   
     </script>
 </body>
 </html>
