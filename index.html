@@ -52,7 +52,6 @@
 
             const { data: { session } } = await client.auth.getSession()
 
-            // ❌ no login
             if (!session) {
                 userInfo.innerHTML = `
                     Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
@@ -62,26 +61,19 @@
 
             const user = session.user
 
-            // 🔥 buscar username
             const { data: profile } = await client
                 .from('profiles')
                 .select('username')
                 .eq('id', user.id)
                 .maybeSingle()
 
-            // ❌ si no hay username → tratar como no logueado
-            if (!profile?.username) {
-                userInfo.innerHTML = `
-                    Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
-                `
-                return
-            }
+            const name = profile?.username
 
-            // ✅ solo username válido
             userInfo.innerHTML = `
-                <a href="sub-pagina/userprofile.html">Hola ${profile.username}</a>
+                <a href="sub-pagina/userprofile.html">Hola ${name}</a>
             `
         }
+
         loadUser()
     </script>
 </body>
