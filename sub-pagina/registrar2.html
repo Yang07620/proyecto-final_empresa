@@ -29,7 +29,9 @@
                         </label>
                         <input type="text" id="nom-user" placeholder="Nom d'usuari" class="Inter-F input-box">
                     </div>
-                <button type="button" class="btn-sessio">Crear</button>
+                <button type="button" class="btn-sessio" onclick="guardarUsername()">
+                    Crear
+                </button>
             </form>
         </div>
     </div>
@@ -48,16 +50,20 @@
 
             const { data: { session } } = await client.auth.getSession()
 
+            if (!session) {
+                alert("No hay sesión activa")
+                window.location.href = "login.html"
+                return
+            }
+
             const user = session.user
 
             const { error } = await client
                 .from('profiles')
-                .upsert([
-                    {
-                        id: user.id,
-                        username: username
-                    }
-                ])
+                .upsert({
+                    id: user.id,
+                    username: username
+                })
 
             if (error) {
                 alert(error.message)
