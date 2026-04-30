@@ -13,55 +13,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
-<body class="display-flex ali-center just-center">
-    <div class="panel-login display-flex column ali-center just-center gap-20">
-        <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
+<body>
+    <a href="../index.html">
+        <img src="../img/img-login/chevron-a-la-izquierda (1).png" alt="" class="volver-img">
+    </a>
+    <div class="display-flex ali-center just-center container-form">
+        <div class="panel-login display-flex column ali-center just-center gap-20">
+            <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
 
-        <span class="Inter-F color-gris pad-10-right">Iniciar ràpida</span>
+            <span class="Inter-F color-gris pad-10-right">Iniciar ràpida</span>
 
-        <div class="button-login-menu display-flex ali-center column space-bet">
-            <!-- Login amb Github (Supabase) -->
-            <button onclick="login()" class="button-proveidor display-flex ali-center just-center gap-20">
-                <img src="../img/img-login/github.png" alt="" id="logo-github-login"><span class="mida-text">Continuar amb GitHub</span>
-            </button>
+            <div class="button-login-menu display-flex ali-center column space-bet">
+                <!-- Login amb Github (Supabase) -->
+                <button onclick="login()" class="button-proveidor display-flex ali-center just-center gap-20">
+                    <img src="../img/img-login/github.png" alt="" id="logo-github-login"><span class="mida-text">Continuar amb GitHub</span>
+                </button>
 
-            <!-- Login amb Discord (Supabase) -->
-            <button onclick="loginDiscord()" class="button-proveidor display-flex ali-center just-center gap-20">
-                <img src="../img/img-login/discordia.png" alt=""><span class="mida-text">Continuar amb Discord</span>
-            </button>
+                <!-- Login amb Discord (Supabase) -->
+                <button onclick="loginDiscord()" class="button-proveidor display-flex ali-center just-center gap-20">
+                    <img src="../img/img-login/discordia.png" alt=""><span class="mida-text">Continuar amb Discord</span>
+                </button>
 
-            <!-- Login amb X (Supabase) -->
-            <button onclick="loginX()"class="button-proveidor display-flex ali-center just-center gap-20">
-                <img src="../img/img-login/gorjeo (1).png" alt=""><span class="mida-text">Continuar amb X</span>
-            </button>
+                <!-- Login amb X (Supabase) -->
+                <button onclick="loginX()"class="button-proveidor display-flex ali-center just-center gap-20">
+                    <img src="../img/img-login/gorjeo (1).png" alt=""><span class="mida-text">Continuar amb X</span>
+                </button>
+            </div>
+            
+            <span class="Inter-F color-gris">Amb una compte</span>
+
+            <form action="" class="display-flex column gap-30 ali-center">
+                <div class="display-flex column gap-20">
+                    <div class="button-proveidor display-flex ali-center just-center gap-10">
+                        <label for="user-mail">
+                            <img src="../img/img-login/correo.png" alt="" class="pad-4">
+                        </label>
+                        <input type="email" class="Inter-F input-box" placeholder="Adreça de correu electrònic" id="user-mail">
+                    </div>
+
+                    <div class="button-proveidor display-flex ali-center just-center gap-10">
+                        <label for="user-pass">
+                            <img src="../img/img-login/ojo-cerrado.png" alt="" class="pad-4">
+                        </label>
+                        <input type="password" class="Inter-F input-box" placeholder="Contrasenya" id="user-pass">
+                    </div>
+                </div>
+
+                <div class="container-link Inter-F display-flex gap-20">
+                    <a href="../sub-pagina/registrar.html">Registrar</a>
+                    <a href="">Oblidar la contrasenya</a>
+                </div>
+
+                <button type="button" onclick="loginEmail()" class="btn-sessio">Iniciar sessió</button>
+            </form>
         </div>
-        
-        <span class="Inter-F color-gris">Amb una compte</span>
-
-        <form action="" class="display-flex column gap-30 ali-center">
-            <div class="display-flex column gap-20">
-                <div class="button-proveidor display-flex ali-center just-center gap-10">
-                    <label for="user-mail">
-                        <img src="../img/img-login/correo.png" alt="" class="pad-4">
-                    </label>
-                    <input type="email" class="Inter-F input-box" placeholder="Adreça de correu electrònic" id="user-mail">
-                </div>
-
-                <div class="button-proveidor display-flex ali-center just-center gap-10">
-                    <label for="user-pass">
-                        <img src="../img/img-login/ojo-cerrado.png" alt="" class="pad-4">
-                    </label>
-                    <input type="password" class="Inter-F input-box" placeholder="Contrasenya" id="user-pass">
-                </div>
-            </div>
-
-            <div class="container-link Inter-F display-flex gap-20">
-                <a href="../sub-pagina/registrar.html">Registrar</a>
-                <a href="">Oblidar la contrasenya</a>
-            </div>
-
-            <button type="button" onclick="loginEmail()" class="btn-sessio">Iniciar sessió</button>
-        </form>
     </div>
 
 

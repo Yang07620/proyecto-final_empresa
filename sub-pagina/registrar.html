@@ -1,37 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrar</title>
+    <link rel="stylesheet" href="../css-carpeta/login.css">
+    <link rel="stylesheet" href="../css-carpeta/display.css">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<body>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="registrar()">Crear</button>
+    <a href="login.html">
+        <img src="../img/img-login/chevron-a-la-izquierda (1).png" alt="" class="volver-img">
+    </a>
+    <div class="display-flex ali-center just-center container-form">
+        <div class="panel-login-re display-flex column ali-center just-center gap-20">
+            <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
+            <span class="Inter-F color-gris">Crear el teu compte</span>
+            <form action="" class="display-flex column gap-30 ali-center">
+                <div class="display-flex column gap-20">
+                    <div class="button-proveidor display-flex ali-center just-center gap-10">
+                        <label for="nom-user">
+                            <img src="../img/img-login/editar.png" alt="" class="pad-4">
+                        </label>
+                        <input type="text" id="nom-user" placeholder="Nom d'usuari" class="Inter-F input-box">
+                    </div>
+
+                    <div class="button-proveidor display-flex ali-center just-center gap-10">
+                        <label for="email-re">
+                            <img src="../img/img-login/correo.png" alt="" class="pad-4">
+                        </label>
+                        <input type="email" id="email-re" placeholder="Adreça de correu electrònic" class="Inter-F input-box">
+                    </div>
+
+                    <div class="button-proveidor display-flex ali-center just-center gap-10">
+                        <label for="password-re">
+                            <img src="../img/img-login/ojo-cerrado.png" alt="" class="pad-4">
+                        </label>
+                        <input type="password" id="password-re" placeholder="Contrasenya" class="Inter-F input-box">
+                    </div>
+                </div>
+                    
+                <button onclick="registrar()" type="button" class="btn-sessio">Crear</button>
+                
+            </form>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../supabase.js"></script>
 
     <script>
         async function registrar() {
-            const email = document.getElementById("email").value
-            const password = document.getElementById("password").value
+            const username = document.getElementById("nom-user").value
+            const email = document.getElementById("email-re").value
+            const password = document.getElementById("password-re").value
 
             const { data, error } = await client.auth.signUp({
-                email: email,
-                password: password
+                email,
+                password
             })
 
             if (error) {
-                alert("Aquest direcció esta uilitzat! Proves l'altre.")
+                alert(error.message)
+                return
+            }
+
+            const user = data?.user
+
+            if (!user) {
+                alert("Usuario creado, pero no retornado aún (normal con email confirm)")
+                return
+            }
+
+            const { error: errorProfile } = await client
+                .from('profiles')
+                .insert([
+                    {
+                        id: user.id,
+                        username: username
+                    }
+                ])
+
+            if (errorProfile) {
+                console.error(errorProfile)
+                alert("Usuario creado pero error guardando perfil")
             } else {
                 alert("Usuario creado correctamente")
                 window.location.href = "login.html"
             }
         }
     </script>
-</body>
 </body>
 </html>
