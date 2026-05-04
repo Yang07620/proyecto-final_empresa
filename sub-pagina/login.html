@@ -76,15 +76,11 @@
 
     <script src="../supabase.js"></script>
     <script>
-
         async function login() {
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'github',
                 options: {
-                    redirectTo: window.location.origin + "/index.html",
-                    queryParams: {
-                        access_type: 'offline'
-                    }
+                    redirectTo: window.location.origin + "/index.html"
                 }
             })
 
@@ -95,10 +91,7 @@
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'discord',
                 options: {
-                    redirectTo: window.location.origin + "/index.html",
-                    queryParams: {
-                        access_type: 'offline'
-                    }
+                    redirectTo: window.location.origin + "/index.html"
                 }
             })
 
@@ -109,16 +102,13 @@
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'x',
                 options: {
-                    redirectTo: window.location.origin + "/index.html",
-                    queryParams: {
-                        access_type: 'offline'
-                    }
+                    redirectTo: window.location.origin + "/index.html"
                 }
             })
 
             if (error) console.log(error)
         }
-    
+
         async function loginEmail() {
             const email = document.querySelector('input[type="email"]').value
             const password = document.querySelector('input[type="password"]').value

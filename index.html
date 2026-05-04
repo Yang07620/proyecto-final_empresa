@@ -49,6 +49,7 @@
     <script>
         async function checkUser() {
             const { data: { session } } = await client.auth.getSession()
+
             const userInfo = document.getElementById("user-info")
 
             if (!session) {
@@ -58,33 +59,20 @@
                 return
             }
 
-            const user = session.user
-
-            // buscar perfil
+            // buscar username en profiles
             const { data, error } = await client
                 .from("profiles")
                 .select("username")
-                .eq("id", user.id)
-                .maybeSingle()
+                .eq("id", session.user.id)
+                .single()
 
-            if (error) {
-                console.error(error)
-                return
-            }
-
-            // 🔴 CASO 1: NO EXISTE PERFIL → onboarding
-            if (!data) {
+            // si no tiene username → onboarding
+            if (!data || !data.username) {
                 window.location.href = "sub-pagina/registrar2.html"
                 return
             }
 
-            // 🔴 CASO 2: existe pero sin username → onboarding
-            if (!data.username || data.username.trim() === "") {
-                window.location.href = "sub-pagina/registrar2.html"
-                return
-            }
-
-            // 🟢 OK → mostrar usuario
+            // mostrar nombre
             userInfo.innerHTML = `
                 Hola <a href="sub-pagina/userprofile.html">${data.username}</a>!
             `

@@ -41,7 +41,7 @@
     <script src="../supabase.js"></script>
     <script>
         async function guardarUsername() {
-            const username = document.getElementById("nom-user").value.trim()
+            const username = document.getElementById("nom-user").value
 
             if (!username) {
                 alert("Es obligatorio poner username")
@@ -58,38 +58,18 @@
 
             const user = session.user
 
-            // comprobar si ya existe perfil
-            const { data: existing, error: checkError } = await client
-                .from("profiles")
-                .select("id")
-                .eq("id", user.id)
-                .maybeSingle()
-
-            if (checkError) {
-                alert(checkError.message)
-                return
-            }
-
-            if (existing) {
-                alert("Ya tienes perfil creado")
-                window.location.href = "../index.html"
-                return
-            }
-
-            // crear perfil
             const { error } = await client
-                .from("profiles")
-                .insert({
+                .from('profiles')
+                .upsert({
                     id: user.id,
                     username: username
                 })
 
             if (error) {
                 alert(error.message)
-                return
+            } else {
+                window.location.href = "../index.html"
             }
-
-            window.location.href = "../index.html"
         }
     </script>
 </body>
