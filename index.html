@@ -49,13 +49,21 @@
     <script>
         async function checkUser() {
             const { data: { session } } = await client.auth.getSession()
-
             const userInfo = document.getElementById("user-info")
 
             if (!session) {
                 userInfo.innerHTML = `
                     Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
                 `
+                return
+            }
+
+            // ✅ detectar si es usuario nuevo
+            const isNewUser =
+                session.user.created_at === session.user.last_sign_in_at
+
+            if (isNewUser) {
+                window.location.href = "sub-pagina/registrar2.html"
                 return
             }
 

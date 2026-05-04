@@ -81,7 +81,10 @@
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'github',
                 options: {
-                    redirectTo: window.location.origin + "/index.html"
+                    redirectTo: window.location.origin + "/index.html",
+                    queryParams: {
+                        access_type: 'offline'
+                    }
                 }
             })
 
@@ -92,7 +95,10 @@
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'discord',
                 options: {
-                    redirectTo: window.location.origin + "/index.html"
+                    redirectTo: window.location.origin + "/index.html",
+                    queryParams: {
+                        access_type: 'offline'
+                    }
                 }
             })
 
@@ -103,13 +109,16 @@
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'x',
                 options: {
-                    redirectTo: window.location.origin + "/index.html"
+                    redirectTo: window.location.origin + "/index.html",
+                    queryParams: {
+                        access_type: 'offline'
+                    }
                 }
             })
 
             if (error) console.log(error)
         }
-
+    
         async function loginEmail() {
             const email = document.querySelector('input[type="email"]').value
             const password = document.querySelector('input[type="password"]').value
