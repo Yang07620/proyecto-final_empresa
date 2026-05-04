@@ -58,29 +58,33 @@
                 return
             }
 
-            // ✅ detectar si es usuario nuevo
-            const isNewUser =
-                session.user.created_at === session.user.last_sign_in_at
+            const user = session.user
 
-            if (isNewUser) {
-                window.location.href = "sub-pagina/registrar2.html"
-                return
-            }
-
-            // buscar username en profiles
+            // buscar perfil
             const { data, error } = await client
                 .from("profiles")
                 .select("username")
-                .eq("id", session.user.id)
-                .single()
+                .eq("id", user.id)
+                .maybeSingle()
 
-            // si no tiene username → onboarding
-            if (!data || !data.username) {
+            if (error) {
+                console.error(error)
+                return
+            }
+
+            // 🔴 CASO 1: NO EXISTE PERFIL → onboarding
+            if (!data) {
                 window.location.href = "sub-pagina/registrar2.html"
                 return
             }
 
-            // mostrar nombre
+            // 🔴 CASO 2: existe pero sin username → onboarding
+            if (!data.username || data.username.trim() === "") {
+                window.location.href = "sub-pagina/registrar2.html"
+                return
+            }
+
+            // 🟢 OK → mostrar usuario
             userInfo.innerHTML = `
                 Hola <a href="sub-pagina/userprofile.html">${data.username}</a>!
             `
