@@ -49,7 +49,6 @@
     <script>
         async function checkUser() {
             const { data: { session } } = await client.auth.getSession()
-
             const userInfo = document.getElementById("user-info")
 
             if (!session) {
@@ -59,20 +58,25 @@
                 return
             }
 
-            // buscar username en profiles
             const { data, error } = await client
                 .from("profiles")
                 .select("username")
                 .eq("id", session.user.id)
-                .single()
+                .maybeSingle()
 
-            // si no tiene username → onboarding
-            if (!data || !data.username) {
-                window.location.href = "sub-pagina/registrar2.html"
+            if (error) {
+                console.error(error)
                 return
             }
 
-            // mostrar nombre
+            // 🟡 NO FORZAR REGISTRO (IMPORTANTE)
+            if (!data || !data.username) {
+                userInfo.innerHTML = `
+                    Hola <a href="sub-pagina/login.html">completar perfil</a>!
+                `
+                return
+            }
+
             userInfo.innerHTML = `
                 Hola <a href="sub-pagina/userprofile.html">${data.username}</a>!
             `

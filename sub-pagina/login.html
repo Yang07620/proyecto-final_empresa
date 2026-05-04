@@ -100,7 +100,7 @@
 
         async function loginX() {
             const { data, error } = await client.auth.signInWithOAuth({
-                provider: 'x', // ⚠️ en Supabase es "twitter", no "x"
+                provider: 'x',
                 options: {
                     redirectTo: window.location.origin + "/index.html"
                 }
@@ -110,21 +110,19 @@
         }
 
         async function loginEmail() {
-            const email = document.getElementById("user-mail").value
-            const password = document.getElementById("user-pass").value
+            const email = document.querySelector('input[type="email"]').value
+            const password = document.querySelector('input[type="password"]').value
 
             const { data, error } = await client.auth.signInWithPassword({
-                email,
-                password
+                email: email,
+                password: password
             })
 
             if (error) {
                 alert("Error: " + error.message)
-                return
+            } else {
+                window.location.href = "../index.html"
             }
-
-            // 🔥 IMPORTANTE: mejor dejar que index controle el flujo
-            window.location.href = "../index.html"
         }
     </script>
 </body>
