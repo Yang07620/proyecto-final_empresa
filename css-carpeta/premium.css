@@ -1,0 +1,40 @@
+/* Carta de Menu */
+
+/* ------------------------ */
+.menu-setmana {
+    border: 1px solid #d8d9db;
+
+    width: 360px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.menu-mensual {
+    border: 1px solid #d8d9db;
+
+    width: 420px;
+    height: 460px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.menu-anual {
+    border: 1px solid #d8d9db;
+
+    width: 450px;
+    height: 500px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.titol-menu {
+    background-color: #f0f0f0;
+    width: fit-content;
+    padding: 5px;
+
+    color: #384347;
+    font-size: 12px;
+    font-weight: 700;
+}
+/* ------------------------- */

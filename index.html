@@ -17,7 +17,7 @@
     <nav class="display-flex space-bet ali-center">
         <a href=""><img src="img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
-        <span id="user-info">
+        <span id="user-info" class="Rubik-F">
             Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
         </span>
 
@@ -27,7 +27,7 @@
                 <li><a href="">Revisar</a></li>
                 <li><a href="">Entrevista</a></li>
                 <li><a href="">Contacte</a></li>
-                <li><a href="">Premium</a></li>
+                <li><a href="sub-pagina-servei/premium.html">Premium</a></li>
             </ul>
 
             <div class="display-flex gap-10">
@@ -45,36 +45,28 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>
+    <script src="auth.js"></script>
 
     <script>
         async function checkUser() {
-            const { data: { session } } = await client.auth.getSession()
-
             const userInfo = document.getElementById("user-info")
 
-            if (!session) {
+            const user = await getUserProfile()
+
+            if (!user) {
                 userInfo.innerHTML = `
                     Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
                 `
                 return
             }
 
-            // buscar username en profiles
-            const { data, error } = await client
-                .from("profiles")
-                .select("username")
-                .eq("id", session.user.id)
-                .single()
-
-            // si no tiene username → onboarding
-            if (!data || !data.username) {
+            if (!user.username) {
                 window.location.href = "sub-pagina/registrar2.html"
                 return
             }
 
-            // mostrar nombre
             userInfo.innerHTML = `
-                Hola <a href="sub-pagina/userprofile.html">${data.username}</a>!
+                Hola <a href="sub-pagina/userprofile.html">${user.username}</a>!
             `
         }
 
