@@ -56,43 +56,43 @@
 
     <script>
         async function registrar() {
-            const username = document.getElementById("nom-user").value
-            const email = document.getElementById("email-re").value
-            const password = document.getElementById("password-re").value
+        const username = document.getElementById("nom-user").value;
+        const email = document.getElementById("email-re").value;
+        const password = document.getElementById("password-re").value;
 
-            const { data, error } = await client.auth.signUp({
-                email,
-                password
-            })
+        const { data, error } = await client.auth.signUp({
+            email,
+            password
+        });
 
-            if (error) {
-                alert(error.message)
-                return
+        if (error) {
+            alert(error.message);
+            return;
+        }
+
+        const user = data?.user;
+
+        if (!user) {
+            alert("Revisa tu email para confirmar la cuenta");
+            return;
+        }
+
+        const { error: errorProfile } = await client
+            .from("profiles")
+            .insert([
+            {
+                id: user.id,
+                username: username
             }
+            ]);
 
-            const user = data?.user
-
-            if (!user) {
-                alert("Usuario creado, pero no retornado aún (normal con email confirm)")
-                return
-            }
-
-            const { error: errorProfile } = await client
-                .from('profiles')
-                .insert([
-                    {
-                        id: user.id,
-                        username: username
-                    }
-                ])
-
-            if (errorProfile) {
-                console.error(errorProfile)
-                alert("Usuario creado pero error guardando perfil")
-            } else {
-                alert("Usuario creado correctamente")
-                window.location.href = "login.html"
-            }
+        if (errorProfile) {
+            console.error(errorProfile);
+            alert("Usuario creado pero error guardando perfil");
+        } else {
+            alert("Usuario creado correctamente");
+            window.location.href = "login.html";
+        }
         }
     </script>
 </body>

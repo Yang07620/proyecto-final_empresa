@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium</title>
-    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
     <link rel="stylesheet" href="../css-carpeta/premium.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
 
@@ -19,7 +19,7 @@
         <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
         <span id="user-info" class="Rubik-F">
-            Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
+            Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
         </span>
 
         <div class="display-flex space-bet container-list-button">
@@ -27,7 +27,7 @@
                 <li><a href="../index.html">Inici</a></li>
                 <li><a href="">Revisar</a></li>
                 <li><a href="">Entrevista</a></li>
-                <li><a href="">Contacte</a></li>
+                <li><a href="contacte.html">Contacte</a></li>
                 <li><a href="premium.html">Premium</a></li>
             </ul>
 
@@ -186,48 +186,59 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="display-flex gap-20 ali-center space-bet">
+        <div class="Rubik-F display-flex column gap-10 text-box-footer2">
+            <p class="Inter-F">Assistent professional</p>
+            <h3>AI CV EDITOR</h3>
+            <p>Plataforma pensada per a ajudar-te a millorar el teu currículum, preparar-te per a entrevistes i avançar amb més seguretat en la teva carrera professional.</p>
+        </div>
         <div class="display-flex gap-20 Rubik-F">
-            <div class="carta-footer display-flex column gap-20">
-                <h2>Serveis</h2>
-                <ul class="display-flex column gap-10">
-                    <li>Revisar</li>
-                    <li>Entrevista</li>
-                </ul>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Serveis</h2>
+                    <ul class="display-flex column gap-10">
+                        <li><a href="">Revisar</a></li>
+                        <li><a href="">Entrevista</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="carta-footer display-flex column gap-20">
-                <h2>Contacte</h2>
-                <ul class="display-flex column gap-10">
-                    <li class="display-flex ali-center gap-10">
-                        <img src="../img/img-premium/sobre-de-correo-electronico.png" alt="">
-                        <a href="">info@jobreadycv.com</a>
-                    </li>
-                    <li class="display-flex ali-center gap-10">
-                        <img src="../img/img-premium/llamar (1).png" alt="">
-                        688 588 388
-                    </li>
-                    <li class="display-flex ali-center gap-10">
-                        <img src="../img/img-premium/pasador-de-ubicacion.png" alt="">
-                        Barcelona, Espanya
-                    </li>
-                </ul>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Contacte</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/sobre-de-correo-electronico.png" alt="">
+                            <a href="">info@jobreadycv.com</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/llamar (1).png" alt="">
+                            688 588 388
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/pasador-de-ubicacion.png" alt="">
+                            Barcelona, Espanya
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="carta-footer display-flex column gap-20">
-                <h2>Xarxes socials</h2>
-                <ul class="display-flex column gap-10">
-                    <li class="display-flex ali-center gap-10">
-                        <img src="../img/img-premium/logotipo-de-instagram.png" alt="">
-                        <a href="">Instagram</a>
-                    </li>
-                    <li class="display-flex ali-center gap-10">
-                        <img src="../img/img-premium/linkedin (1).png" alt="">
-                        <a href="">LinkedIn</a>
-                    </li>
-                    <li class="display-flex ali-center gap-10">
-                        <img src="../img/img-premium/youtube (2).png" alt="">
-                        <a href="">YouTube</a>
-                    </li>
-                </ul>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Xarxes socials</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/logotipo-de-instagram.png" alt="">
+                            <a href="">Instagram</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/linkedin (1).png" alt="">
+                            <a href="">LinkedIn</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/youtube (2).png" alt="">
+                            <a href="">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
@@ -243,13 +254,13 @@
 
             if (!user) {
                 userInfo.innerHTML = `
-                    Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
+                    Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
                 `
                 return
             }
 
             if (!user.username) {
-                window.location.href = "sub-pagina/registrar2.html"
+                window.location.href = "../sub-pagina/registrar2.html"
                 return
             }
 

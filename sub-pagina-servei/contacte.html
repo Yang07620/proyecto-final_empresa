@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacte</title>
+    <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
+    <link rel="stylesheet" href="../css-carpeta/display.css">
+    <link rel="stylesheet" href="../css-carpeta/contacte.css">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="display-flex space-bet ali-center">
+        <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
+
+        <span id="user-info" class="Rubik-F">
+            Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
+        </span>
+
+        <div class="display-flex space-bet container-list-button">
+            <ul class="display-flex gap-50">
+                <li><a href="../index.html">Inici</a></li>
+                <li><a href="">Revisar</a></li>
+                <li><a href="">Entrevista</a></li>
+                <li><a href="contacte.html">Contacte</a></li>
+                <li><a href="premium.html">Premium</a></li>
+            </ul>
+
+            <div class="display-flex gap-10">
+                <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
+                <button class="but-iniciar"><a href="">Crear</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="display-flex just-center ali-center">
+        <div class="display-flex column gap-20 ali-center box-info-contacte just-center">
+            <h1 class="Rubik-F">Contactar amb nosaltres!</h1>
+            <form action="" class="display-flex column just-center gap-30">
+                <div class="display-flex column gap-20">
+                    <input type="text" placeholder="El teu nom" id="input-nom">
+
+                    <div class="display-flex space-bet gap-10">
+                        <input type="email" placeholder="El teu mail" id="input-mail" class="input-mail-tel-contacte">
+                        <input type="tel" placeholder="El teu número de telèfon" id="input-tel" class="input-mail-tel-contacte">
+                    </div>
+
+                    <select name="" id="form-contacte" class="Inter-F">
+                        <option value="select" disabled selected>Seleccionar preguntes</option>
+                        <option value="temps">Quant de temps es triga a rebre la resposta del CV?</option>
+                        <option value="entrevista">La simulació d’entrevista es realitza en línia?</option>
+                        <option value="dades">Les meves dades personals estan protegides?</option>
+                        <option value="idioma">En quins idiomes es pot fer el servei?</option>
+                        <option value="urgent">Hi ha opcions urgents o exprés?</option>
+                        <option value="altres">Altres</option>
+                    </select>
+                </div>
+
+                <div class="display-flex column gap-20">
+                    <textarea name="" id="text-pregunta" placeholder="Escriures la teva pregunta"></textarea>
+                    <button type="submit" id="but-contacte">Enviar →</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="display-flex gap-20 ali-center space-bet">
+        <div class="Rubik-F display-flex column gap-10 text-box-footer2">
+            <p class="Inter-F">Assistent professional</p>
+            <h3>AI CV EDITOR</h3>
+            <p>Plataforma pensada per a ajudar-te a millorar el teu currículum, preparar-te per a entrevistes i avançar amb més seguretat en la teva carrera professional.</p>
+        </div>
+        <div class="display-flex gap-20 Rubik-F">
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Serveis</h2>
+                    <ul class="display-flex column gap-10">
+                        <li><a href="">Revisar</a></li>
+                        <li><a href="">Entrevista</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Contacte</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/sobre-de-correo-electronico.png" alt="">
+                            <a href="">info@jobreadycv.com</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/llamar (1).png" alt="">
+                            688 588 388
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/pasador-de-ubicacion.png" alt="">
+                            Barcelona, Espanya
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Xarxes socials</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/logotipo-de-instagram.png" alt="">
+                            <a href="">Instagram</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/linkedin (1).png" alt="">
+                            <a href="">LinkedIn</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/youtube (2).png" alt="">
+                            <a href="">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../supabase.js"></script>
+    <script src="../auth.js"></script>
+    
+    <script>
+        document.querySelector("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nom = document.getElementById("input-nom").value;
+        const email = document.getElementById("input-mail").value;
+        const telefon = document.getElementById("input-tel").value;
+        const pregunta = document.getElementById("form-contacte").value;
+        const missatge = document.getElementById("text-pregunta").value;
+
+        const { error } = await client
+            .from("contactes")
+            .insert([
+            { nom, email, telefon, pregunta, missatge }
+            ]);
+
+        if (error) {
+            console.log(error);
+            alert("Error al enviar el formulari");
+        } else {
+            alert("Missatge enviat correctament!");
+            e.target.reset();
+        }
+        });
+
+    </script>
+
+    <script>
+        async function checkUser() {
+            const userInfo = document.getElementById("user-info")
+
+            const user = await getUserProfile()
+
+            if (!user) {
+                userInfo.innerHTML = `
+                    Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
+                `
+                return
+            }
+
+            if (!user.username) {
+                window.location.href = "../sub-pagina/registrar2.html"
+                return
+            }
+
+            userInfo.innerHTML = `
+                Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
+            `
+        }
+
+        // 👇 SOLO UNA VEZ Y AL FINAL
+        checkUser()
+    </script>
+</body>
+</html>

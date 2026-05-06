@@ -6,6 +6,7 @@
     <title>JobReadyCV</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="css-carpeta/display.css">
+    <link rel="stylesheet" href="css-carpeta/contenidos-pag/nav-footer.css">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +27,7 @@
                 <li><a href="">Inici</a></li>
                 <li><a href="">Revisar</a></li>
                 <li><a href="">Entrevista</a></li>
-                <li><a href="">Contacte</a></li>
+                <li><a href="sub-pagina-servei/contacte.html">Contacte</a></li>
                 <li><a href="sub-pagina-servei/premium.html">Premium</a></li>
             </ul>
 
@@ -49,28 +50,33 @@
 
     <script>
         async function checkUser() {
-            const userInfo = document.getElementById("user-info")
+        const userInfo = document.getElementById("user-info");
 
-            const user = await getUserProfile()
+        const user = await getUserProfile();
 
-            if (!user) {
-                userInfo.innerHTML = `
-                    Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
-                `
-                return
-            }
-
-            if (!user.username) {
-                window.location.href = "sub-pagina/registrar2.html"
-                return
-            }
-
+        // 1. No logueado
+        if (!user) {
             userInfo.innerHTML = `
-                Hola <a href="sub-pagina/userprofile.html">${user.username}</a>!
-            `
+            Hola 👋 <a href="sub-pagina/login.html">iniciar sessió</a>!
+            `;
+            return;
         }
 
-        checkUser()
+        // 2. Logueado pero sin username
+        if (!user.username) {
+            userInfo.innerHTML = `
+            Hola 👋 <a href="sub-pagina/registrar2.html">usuari sense nom</a>
+            `;
+            return;
+        }
+
+        // 3. Todo OK
+        userInfo.innerHTML = `
+            Hola <a href="sub-pagina/userprofile.html">${user.username}</a>!
+        `;
+        }
+
+        checkUser();
     </script>
 </body>
 </html>
