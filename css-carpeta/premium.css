@@ -115,6 +115,13 @@ h1 {
 /* ------------------- */
 
 footer {
-    height: 300px;
-    width: fit-content;
+    height: 230px;
+    width: 100%;
+    background-color: white;
+}
+
+.carta-footer {
+    width: 300px;
+    height: 250px;
+    border: 1px solid black;
 }
