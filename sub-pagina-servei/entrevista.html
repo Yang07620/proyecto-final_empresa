@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista</title>
+</head>
+<body>
+
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+
+    <button id="start">Iniciar entrevista</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../supabase.js"></script>
+    <script src="../auth.js"></script>
+
+    <script type="module">
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+        const supabase = createClient(
+        "https://TU_PROJECT.supabase.co",
+        "TU_ANON_KEY"
+        );
+
+        const room = "entrevista-123"; // puedes hacerlo dinámico luego
+
+        let pc;
+        let localStream;
+
+        const servers = {
+        iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+        };
+
+        document.getElementById("start").onclick = async () => {
+        localStream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+        });
+
+        document.getElementById("localVideo").srcObject = localStream;
+
+        pc = new RTCPeerConnection(servers);
+
+        localStream.getTracks().forEach(track =>
+            pc.addTrack(track, localStream)
+        );
+
+        pc.ontrack = (event) => {
+            document.getElementById("remoteVideo").srcObject = event.streams[0];
+        };
+
+        pc.onicecandidate = async (event) => {
+            if (event.candidate) {
+            await supabase.from("calls").insert({
+                room,
+                data: { candidate: event.candidate }
+            });
+            }
+        };
+
+        // ESCUCHAR SEÑALES
+        supabase
+            .channel("calls")
+            .on("postgres_changes", { event: "INSERT", schema: "public", table: "calls" }, async (payload) => {
+            const data = payload.new.data;
+
+            if (data.offer) {
+                await pc.setRemoteDescription(data.offer);
+                const answer = await pc.createAnswer();
+                await pc.setLocalDescription(answer);
+
+                await supabase.from("calls").insert({
+                room,
+                data: { answer }
+                });
+            }
+
+            if (data.answer) {
+                await pc.setRemoteDescription(data.answer);
+            }
+
+            if (data.candidate) {
+                try {
+                await pc.addIceCandidate(data.candidate);
+                } catch (e) {}
+            }
+            })
+            .subscribe();
+
+        // Crear oferta (primer usuario)
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+
+        await supabase.from("calls").insert({
+            room,
+            data: { offer }
+        });
+        };
+    </script>
+</body>
+</html>
