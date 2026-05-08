@@ -1,0 +1,59 @@
+main {
+    padding: 150px 0px;
+    border-bottom: 3px solid rgb(250, 250, 250);
+}
+
+.llama-back {
+    width: 600px;
+    height: 500px;
+
+    border: 1px solid black;
+
+    background: #1f1f1f;
+
+    border-radius: 10px;
+}
+
+.llama-back p {
+    color: #9C9C9C;
+}
+
+.back-box-entrevista {
+    width: 1350px;
+    height: 650px;
+    border: 1px solid black;
+    background-color: #000000;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* ----------------------------------- */
+
+.box-ui-entrevista {
+    width: 1350px;
+    height: 150px;
+
+    background: #3b3b3b;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.ui-img {
+    border: 2px solid rgb(150, 150, 150);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 12px;
+
+    padding: 10px;
+}
+
+#completar {
+    position: absolute;
+
+    padding-left: 1300px;
+    padding-top: 20px;
+}
+
+

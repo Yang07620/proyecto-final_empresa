@@ -1,103 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrevista</title>
+    <link rel="stylesheet" href="../css-carpeta/entrevista.css">
+    <link rel="stylesheet" href="../css-carpeta/display.css">
+    <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav class="display-flex space-bet ali-center">
+        <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
-    <video id="localVideo" autoplay muted></video>
-    <video id="remoteVideo" autoplay></video>
+        <span id="user-info" class="Rubik-F">
+            Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
+        </span>
 
-    <button id="start">Iniciar entrevista</button>
+        <div class="display-flex space-bet container-list-button">
+            <ul class="display-flex gap-50">
+                <li><a href="../index.html">Inici</a></li>
+                <li><a href="">Revisar</a></li>
+                <li><a href="../sub-pagina-servei/entrevista.html">Entrevista</a></li>
+                <li><a href="../sub-pagina-servei/contacte.html">Contacte</a></li>
+                <li><a href="../sub-pagina-servei/premium.html">Premium</a></li>
+            </ul>
+
+            <div class="display-flex gap-10">
+                <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
+                <button class="but-iniciar"><a href="sub-pagina-servei/crearcv.html">Crear</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="display-flex just-center ali-center">
+        <div>
+            <img src="../img/img-entrevista/tamano-completo.png" alt="" id="completar">
+            <div class="Inter-F back-box-entrevista display-flex ali-center just-center">
+                <div class="display-flex gap-10">
+                    <div class="llama-back display-flex column ali-center gap-10 just-center">
+                        <img src="../img/img-entrevista/usuario.png" alt="">
+                        <p>Entrevistador</p>
+                    </div>
+                    <div class="llama-back display-flex column ali-center gap-10 just-center">
+                        <img src="../img/img-entrevista/usuario.png" alt="">
+                        <p>Usuari (client)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box-ui-entrevista display-flex just-center ali-center">
+                <div class="display-flex gap-40">
+                    <div class="ui-img display-flex ali-center">
+                        <img src="../img/img-entrevista/videollamada (2).png" alt="">
+                    </div>
+                    <div class="ui-img display-flex ali-center">
+                        <img src="../img/img-entrevista/bot-de-chat.png" alt="">
+                    </div>
+                    <div class="ui-img display-flex ali-center">
+                        <img src="../img/img-entrevista/forma-de-microfono-negro (1).png" alt="">
+                    </div>
+                    <div class="ui-img display-flex ali-center">
+                        <img src="../img/img-entrevista/telefono (1).png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../supabase.js"></script>
     <script src="../auth.js"></script>
 
-    <script type="module">
-        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+    <script>
+        async function checkUser() {
+            const userInfo = document.getElementById("user-info")
 
-        const supabase = createClient(
-        "https://TU_PROJECT.supabase.co",
-        "TU_ANON_KEY"
-        );
+            const user = await getUserProfile()
 
-        const room = "entrevista-123"; // puedes hacerlo dinámico luego
-
-        let pc;
-        let localStream;
-
-        const servers = {
-        iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
-        };
-
-        document.getElementById("start").onclick = async () => {
-        localStream = await navigator.mediaDevices.getUserMedia({
-            video: true,
-            audio: true
-        });
-
-        document.getElementById("localVideo").srcObject = localStream;
-
-        pc = new RTCPeerConnection(servers);
-
-        localStream.getTracks().forEach(track =>
-            pc.addTrack(track, localStream)
-        );
-
-        pc.ontrack = (event) => {
-            document.getElementById("remoteVideo").srcObject = event.streams[0];
-        };
-
-        pc.onicecandidate = async (event) => {
-            if (event.candidate) {
-            await supabase.from("calls").insert({
-                room,
-                data: { candidate: event.candidate }
-            });
-            }
-        };
-
-        // ESCUCHAR SEÑALES
-        supabase
-            .channel("calls")
-            .on("postgres_changes", { event: "INSERT", schema: "public", table: "calls" }, async (payload) => {
-            const data = payload.new.data;
-
-            if (data.offer) {
-                await pc.setRemoteDescription(data.offer);
-                const answer = await pc.createAnswer();
-                await pc.setLocalDescription(answer);
-
-                await supabase.from("calls").insert({
-                room,
-                data: { answer }
-                });
+            if (!user) {
+                userInfo.innerHTML = `
+                    Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
+                `
+                return
             }
 
-            if (data.answer) {
-                await pc.setRemoteDescription(data.answer);
+            if (!user.username) {
+                window.location.href = "../sub-pagina/registrar2.html"
+                return
             }
 
-            if (data.candidate) {
-                try {
-                await pc.addIceCandidate(data.candidate);
-                } catch (e) {}
-            }
-            })
-            .subscribe();
+            userInfo.innerHTML = `
+                Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
+            `
+        }
 
-        // Crear oferta (primer usuario)
-        const offer = await pc.createOffer();
-        await pc.setLocalDescription(offer);
-
-        await supabase.from("calls").insert({
-            room,
-            data: { offer }
-        });
-        };
+        // 👇 SOLO UNA VEZ Y AL FINAL
+        checkUser()
     </script>
 </body>
 </html>
