@@ -43,13 +43,20 @@ main {
 .info-box-entrevista {
     width: 1350px;
     border: 1px solid black;
+
+    padding: 15px;
+
 }
 
 .menu-infor {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: fit-content;
+    height: fit-content;
 
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(140, 201, 250);
+    padding: 20px;
+
+    border-radius: 10px;
 }
 
 .input-infor {
@@ -63,6 +70,7 @@ main {
     padding: 6px;
 
     font-size: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
 .input-infor:hover {
@@ -70,3 +78,46 @@ main {
     border: 2px solid rgb(0, 195, 255);
 }
 
+.info-box-entrevista button {
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+
+    background-color: rgb(176, 230, 255);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.info-box-entrevista button:hover {
+    background-color: #88a5ad;
+}
+
+.pad-5-left {
+    padding-left: 5px;
+}
+
+/* -------------------------------------- */
+
+.carta-pre-box {
+    width: 300px;
+    height: 330px;
+    border: 1px solid black;
+
+    border-radius: 10px;
+}
+
+.pre-box-total {
+    background-color: white;
+}
+
+/* -------------------------------- */
+
+.serch-box {
+    min-width: 270px;
+    height: fit-content;
+    border: 1px solid black;
+}
