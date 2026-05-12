@@ -55,8 +55,8 @@
             </div>
         </div>
 
-        <div class="info-box-entrevista display-flex gap-20 space-bet">
-            <div>
+        <div class="info-box-entrevista display-flex gap-30">
+            <div class="box-total-left">
                 <div class="menu-infor Rubik-F display-flex column gap-20">
                     <div>
                         <p class="pad-5-left">INTRODUEIX EL CODI</p>
@@ -69,116 +69,104 @@
                     <button class="Inter-F">CONECTAR</button>
                 </div>
 
-                <div class="serch-box Inter-F">
-                    <form action="" class="display-flex column gap-20">
-                        <label for="cat-1">
-                            <input type="checkbox" id="cat-1">
-                            Tecnologia i informàtica
-                        </label>
+                <select name="" id="select-cat" class="Rubik-F select-panel">
+                    <option value="" disabled selected>Seleccionar categories</option>
+                    <option value="tec-inf">Tecnologia i informàtica</option>
+                    <option value="sal-med">Salut i medicina</option>
+                    <option value="edu-for">Educació i formació</option>
+                    <option value="fin-neg">Finances i negocis</option>
+                    <option value="dis-cre">Disseny i creativitat</option>
+                </select>
 
-                        <label for="cat-2">
-                            <input type="checkbox" id="cat-2">
-                            Salut i medicina
-                        </label>
+                <div class="Rubik-F">
+                    <div class="display-flex gap-10 ali-center">
+                        <img src="../img/img-entrevista/puntos.png" alt=""> En línia
+                    </div>
 
-                        <label for="cat-3">
-                            <input type="checkbox" id="cat-3">
-                            Educació i formació
-                        </label>
+                    <div class="display-flex gap-10 ali-center">
+                        <img src="../img/img-entrevista/puntos (1).png" alt=""> Fora de línia
+                    </div>
 
-                        <label for="cat-4">
-                            <input type="checkbox" id="cat-4">
-                            Finances i negocis
-                        </label>
-
-                        <label for="cat-5">
-                            <input type="checkbox" id="cat-5">
-                            Disseny i creativitat
-                        </label>
-                    </form>
-                    <button type="button">BUSCAR</button>
+                    <div class="display-flex gap-10 ali-center">
+                        <img src="../img/img-entrevista/puntos (2).png" alt=""> En l'entrevista
+                    </div>
                 </div>
+
+                 <p class="Rubik-F">Números d'entrevista:</p>
+
+                 <div class="preguntas-panel Inter-F">
+                    <h3>Preguntes freqüents</h3>
+                    <a href="">Vull fer més simulació d'entrevista</a>
+                    <a href="">Què significa etiqueta?</a>
+                    <a href="">Com puc fer entrevista?</a>
+                    <a href="">Tinc problema sobre entrevista</a>
+                 </div>
             </div>
 
-            <!-- ------------------------------ -->
-
-            <div class="display-flex column gap-30 pre-box-total Rubik-F">
-                <div class="display-flex gap-20">
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/mujer (1).png" alt="">
-                        <p>Nom: Martina</p>
-                        <p>Categoria: Educació i formació</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/hombre.png" alt="">
-                        <p>Nom: Leo</p>
-                        <p>Categoria: Educació i formació</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/ceo.png" alt="">
-                        <p>Nom: Biel</p>
-                        <p>Categoria: Finances i negocis</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                </div>
-
-                <div class="display-flex gap-20">
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/anciano.png" alt="">
-                        <p>Nom: Pol</p>
-                        <p>Categoria: Disseny i creativitat</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/mujer (2).png" alt="">
-                        <p>Nom: Ona</p>
-                        <p>Categoria: Finances i negocis</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/medico (1).png" alt="">
-                        <p>Nom: Arnau</p>
-                        <p>Categoria: Salut i medicina</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                </div>
-
-                <div class="display-flex gap-20">
-                    <div class="carta-pre-box display-flex just-center">
-                        <div class="display-flex column gap-10 ali-center just-center">
-                            <img src="../img/img-entrevista/fontanero.png" alt="">
-                            <p>Nom: Jan</p>
-                            <p>Categoria: Tecnologia i informàtica</p>
-                            <p>Esperiència: 4 anys</p>
-                            <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                        </div>
-                    </div>
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/empresario.png" alt="">
-                        <p>Nom: Èric</p>
-                        <p>Categoria: Tecnologia i informàtica</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
-                    <div class="carta-pre-box">
-                        <img src="../img/img-entrevista/medico.png" alt="">
-                        <p>Nom: Emma</p>
-                        <p>Categoria: Salut i medicina</p>
-                        <p>Esperiència: 4 anys</p>
-                        <img src="../img/img-entrevista/estrellas (1).png" alt="">
-                    </div>
+            <div class="box-right-total">
+                <div id="div-inf">
+                
                 </div>
             </div>
         </div>
     </main>
+
+    <footer class="display-flex gap-20 ali-center space-bet">
+        <div class="Rubik-F display-flex column gap-10 text-box-footer2">
+            <p class="Inter-F">Assistent professional</p>
+            <h3>AI CV EDITOR</h3>
+            <p>Plataforma pensada per a ajudar-te a millorar el teu currículum, preparar-te per a entrevistes i avançar amb més seguretat en la teva carrera professional.</p>
+        </div>
+        <div class="display-flex gap-20 Rubik-F">
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Serveis</h2>
+                    <ul class="display-flex column gap-10">
+                        <li><a href="">Revisar</a></li>
+                        <li><a href="">Entrevista</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Contacte</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/sobre-de-correo-electronico.png" alt="">
+                            <a href="">info@jobreadycv.com</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/llamar (1).png" alt="">
+                            688 588 388
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/pasador-de-ubicacion.png" alt="">
+                            Barcelona, Espanya
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Xarxes socials</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/logotipo-de-instagram.png" alt="">
+                            <a href="">Instagram</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/linkedin (1).png" alt="">
+                            <a href="">LinkedIn</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/youtube (2).png" alt="">
+                            <a href="">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../supabase.js"></script>
@@ -209,6 +197,62 @@
 
         // 👇 SOLO UNA VEZ Y AL FINAL
         checkUser()
+    </script>
+
+    <script>
+        const categorias = [
+        {
+            Nombre: "Miquel",
+            Categoria: "Tecnologia i informàtica",
+            Experiencia: "4"
+        },
+        {
+            Nombre: "Juan",
+            Categoria: "Salut i medicina",
+            Experiencia: "3"
+        },
+        {
+            Nombre: "Julian",
+            Categoria: "Educació i formació",
+            Experiencia: "4"
+        },
+        {
+            Nombre: "Manel",
+            Categoria: "Finances i negocis",
+            Experiencia: "3"
+        },
+        {
+            Nombre: "Emma",
+            Categoria: "Disseny i creativitat",
+            Experiencia: "4"
+        }
+    ];
+
+
+        const MyDiv = document.querySelector("#div-inf")
+
+        const Mysele = document.querySelector("#select-cat")
+
+        Mysele.addEventListener("change", camviarCategories)
+
+        function camviarCategories(){
+            if (Mysele.value === "tec-inf") {
+                console.log("tec-inf")
+                MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos.png" alt=""><img src="../img/img-entrevista/hombre.png" alt=""><p>Nom: ${categorias[0].Nombre}</p><p>Categoria: ${categorias[0].Categoria}</p><p>Experiència: ${categorias[0].Experiencia} anys</p></div>`
+            } else if (Mysele.value === "sal-med") {
+                console.log("sal-med")
+                MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos (1).png" alt=""><img src="../img/img-entrevista/medico (1).png" alt=""><p>Nom: ${categorias[1].Nombre}</p><p>Categoria: ${categorias[1].Categoria}</p><p>Experiència: ${categorias[1].Experiencia} anys</p></div>`
+            } else if (Mysele.value === "edu-for") {
+                console.log("edu-for")
+                MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos.png" alt=""><img src="../img/img-entrevista/ceo.png" alt=""><p>Nom: ${categorias[2].Nombre}</p><p>Categoria: ${categorias[2].Categoria}</p><p>Experiència: ${categorias[2].Experiencia} anys</p></div>`
+            } else if (Mysele.value === "fin-neg") {
+                console.log("fin-neg")
+                MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos (2).png" alt=""><img src="../img/img-entrevista/anciano.png" alt=""><p>Nom: ${categorias[3].Nombre}</p><p>Categoria: ${categorias[3].Categoria}</p><p>Experiència: ${categorias[3].Experiencia} anys</p></div>`
+            } else if (Mysele.value === "dis-cre") {
+                console.log("dis-cre")
+                MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos.png" alt=""><img src="../img/img-entrevista/mujer (2).png" alt=""><p>Nom: ${categorias[4].Nombre}</p><p>Categoria: ${categorias[4].Categoria}</p><p>Experiència: ${categorias[4].Experiencia} anys</p></div>`
+            } 
+        }
     </script>
 </body>
 </html>
