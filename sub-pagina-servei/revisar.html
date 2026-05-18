@@ -71,6 +71,10 @@
                     <button id="re-ia" class="btn-revisio Inter-F">Revisió IA</button>
                 </div>
 
+                <div>
+                    
+                </div>
+
                 <div class="display-flex gap-10 ali-center Rubik-F">
                     <img src="../img/img-revisar/advertencia.png" alt="">
                     <p>No compartim mai les teves dades amb tercers ni les utilitzem per entrenar models d’IA.</p>
@@ -240,7 +244,7 @@
         }
 
         BtnHuman.addEventListener("click", humana)
-        function Humana(){
+        function humana(){
             Navpass.innerHTML= `<div class="display-flex ali-center gap-20" id="nav-pass">
                 <img src="../img/img-revisar/uno.png" alt="">
                 <div class="linea-recta1"></div>
@@ -250,6 +254,9 @@
                 <div class="linea-recta2"></div>
                 <img src="../img/img-revisar/cuatro (1).png" alt="">
             </div>`
+
+            Pass2.classList.remove("active")
+            Pass2.classList.add("box")
         }
     </script>
 </body>

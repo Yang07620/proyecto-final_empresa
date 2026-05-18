@@ -71,7 +71,7 @@ main button:hover {
     padding: 10px 20px;
 
     background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.178);
     /* border-radius: 10px; */
 }
 
@@ -97,6 +97,7 @@ main button:hover {
 
 .border-carta-bajo {
     border-bottom: 5px solid rgb(3, 124, 236);
+    transition: 0.3ms;
 }
 
 /* ---------------------------------------- */
