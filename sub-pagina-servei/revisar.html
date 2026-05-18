@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisar</title>
+    <link rel="stylesheet" href="../css-carpeta/revisar.css">
+    <link rel="stylesheet" href="../css-carpeta/display.css">
+    <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="display-flex space-bet ali-center">
+        <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
+
+        <span id="user-info" class="Rubik-F">
+            Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
+        </span>
+
+        <div class="display-flex space-bet container-list-button">
+            <ul class="display-flex gap-50">
+                <li><a href="../index.html">Inici</a></li>
+                <li><a href="">Revisar</a></li>
+                <li><a href="../sub-pagina-servei/entrevista.html">Entrevista</a></li>
+                <li><a href="../sub-pagina-servei/contacte.html">Contacte</a></li>
+                <li><a href="../sub-pagina-servei/premium.html">Premium</a></li>
+            </ul>
+
+            <div class="display-flex gap-10">
+                <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
+                <button class="but-iniciar"><a href="sub-pagina-servei/crearcv.html">Crear</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="display-flex just-center column ali-center gap-40">
+        <div class="box-completo">
+            <div class="display-flex gap-20 ali-center">
+                <img src="../img/img-revisar/aplicacion-de-ia.png" alt="">
+                <h1 class="Inter-F">Revisió amb IA</h1>
+            </div>
+            
+            <div class="display-flex column gap-30">
+                <textarea id="cvInput" placeholder="Copiar aquí el teu CV..." class="Inter-F"></textarea>
+                <!-- Área donde el usuario pega su CV -->
+
+                <button id="btn" onclick="corregirCV()" class="Inter-F btn-3">
+                    Corregir CV
+                </button>
+                <!-- Botón que ejecuta la función JS -->
+            </div>
+        </div>
+
+        <div class="box-completo">
+            <div class="display-flex gap-20 ali-center">
+                <img src="../img/img-revisar/resultados-de-los-examenes.png" alt="">
+                <h1 class="Inter-F">Resultat corregit</h1>
+            </div>
+            <div class="display-flex column gap-30">
+                <div class="resultado Inter-F" id="resultado"></div>
+                <!-- Aquí se muestra la respuesta de la IA -->
+                <button id="net-but">Netejar</button>
+            </div>
+        </div>
+
+        <div class="display-flex gap-10 ali-center Rubik-F">
+            <img src="../img/img-revisar/advertencia.png" alt="">
+            <p>No compartim mai les teves dades amb tercers ni les utilitzem per entrenar models d’IA.</p>
+        </div>
+    </main>
+
+    <footer class="display-flex gap-20 ali-center space-bet">
+        <div class="Rubik-F display-flex column gap-10 text-box-footer2">
+            <p class="Inter-F">Assistent professional</p>
+            <h3>AI CV EDITOR</h3>
+            <p>Plataforma pensada per a ajudar-te a millorar el teu currículum, preparar-te per a entrevistes i avançar amb més seguretat en la teva carrera professional.</p>
+        </div>
+        <div class="display-flex gap-20 Rubik-F">
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Serveis</h2>
+                    <ul class="display-flex column gap-10">
+                        <li><a href="">Revisar</a></li>
+                        <li><a href="">Entrevista</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Contacte</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/sobre-de-correo-electronico.png" alt="">
+                            <a href="">info@jobreadycv.com</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/llamar (1).png" alt="">
+                            688 588 388
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/pasador-de-ubicacion.png" alt="">
+                            Barcelona, Espanya
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carta-footer display-flex column just-center">
+                <div class="display-flex column gap-20 text-box-footer">
+                    <h2>Xarxes socials</h2>
+                    <ul class="display-flex column gap-10">
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/logotipo-de-instagram.png" alt="">
+                            <a href="">Instagram</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/linkedin (1).png" alt="">
+                            <a href="">LinkedIn</a>
+                        </li>
+                        <li class="display-flex ali-center gap-10">
+                            <img src="../img/img-premium/youtube (2).png" alt="">
+                            <a href="">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../supabase.js"></script>
+    <script src="../auth.js"></script>
+
+    <script>
+        async function checkUser() {
+            const userInfo = document.getElementById("user-info")
+
+            const user = await getUserProfile()
+
+            if (!user) {
+                userInfo.innerHTML = `
+                    Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
+                `
+                return
+            }
+
+            if (!user.username) {
+                window.location.href = "../sub-pagina/registrar2.html"
+                return
+            }
+
+            userInfo.innerHTML = `
+                Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
+            `
+        }
+
+        // 👇 SOLO UNA VEZ Y AL FINAL
+        checkUser()
+    </script>
+
+    <script>
+
+        // ===== FUNCIÓN PRINCIPAL =====
+        async function corregirCV() {
+
+            // Captura el texto del CV escrito por el usuario
+            const cv = document.getElementById("cvInput").value;
+
+            // Zona donde mostraremos la respuesta
+            const resultado = document.getElementById("resultado");
+
+            // Botón (para desactivarlo mientras carga)
+            const btn = document.getElementById("btn");
+
+            // Si el CV está vacío
+            if(!cv.trim()){
+            resultado.innerHTML = "⚠️ Escribe un CV primero";
+            return; // corta la función
+            }
+
+            // Desactiva botón mientras carga
+            btn.disabled = true;
+
+            // Mensaje de carga
+            resultado.innerHTML = "⏳ Analizando CV...";
+
+            try {
+
+            // ===== LLAMADA A LA API DE GROQ =====
+            const response = await fetch(
+                "https://api.groq.com/openai/v1/chat/completions",
+                {
+                method: "POST", // tipo de petición
+
+                headers: {
+                    "Content-Type": "application/json", // formato JSON
+
+                    // API KEY (autenticación)
+                    "Authorization": "Bearer"
+                },
+
+                body: JSON.stringify({
+
+                    // Modelo de IA que usamos
+                    model: "llama-3.3-70b-versatile",
+
+                    // Mensajes enviados a la IA
+                    messages: [
+
+                    {
+                        role: "system",
+                        content: `
+        Eres un recruiter senior experto en CVs y ATS.
+
+        Tu tarea es mejorar CVs para que consigan entrevistas.
+
+        IMPORTANTE:
+        Devuelve EXACTAMENTE este formato:
+
+        1. CV MEJORADO (solo el CV, sin explicaciones)
+
+        2. ERRORES DETECTADOS (lista corta)
+
+        3. MEJORAS (lista corta y accionable)
+
+        Reglas:
+        - No incluyas frases como "recomiendo"
+        - No expliques dentro del CV
+        - Hazlo profesional y claro
+                        `
+                    },
+
+                    {
+                        role: "user",
+                        content: cv // CV del usuario
+                    }
+                    ]
+                })
+                }
+            );
+
+            // Convierte respuesta a JSON
+            const data = await response.json();
+
+            // Muestra respuesta en consola (debug)
+            console.log(data);
+
+            // Si la API devuelve error
+            if(data.error){
+                resultado.innerHTML = "❌ Error: " + data.error.message;
+                btn.disabled = false; // activa botón otra vez
+                return;
+            }
+
+            // Si la respuesta es correcta
+            if(data.choices && data.choices[0]){
+                resultado.innerHTML = data.choices[0].message.content;
+            } else {
+                resultado.innerHTML = "❌ Respuesta inválida";
+            }
+
+            } catch (error) {
+
+            // Si falla la conexión
+            console.log(error);
+            resultado.innerHTML = "❌ Error conectando con la IA";
+            }
+
+            // Reactiva el botón al final
+            btn.disabled = false;
+        }
+
+    </script>
+
+    <script>
+        const BtnN = document.getElementById("net-but")
+        const resultado = document.getElementById("resultado")
+        BtnN.addEventListener("click", netejar)
+
+        function netejar(){
+            resultado.innerHTML = ""
+        }
+    </script>
+</body>
+</html>
