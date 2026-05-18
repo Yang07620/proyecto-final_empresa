@@ -1,0 +1,141 @@
+main {
+    padding: 150px 0px;
+    border-bottom: 3px solid rgb(250, 250, 250);
+}
+
+.box {
+  display: none;
+}
+
+.active {
+    display: flex;
+}
+
+.inline {
+    display: inline-block;
+}
+
+/* -------------------------------- */
+
+.box-completo {
+    width: 1200px;
+    height: 700px;
+    /* border: 1px solid black; */
+    background-color: white;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.linea-recta1 {
+    width: 210px;
+    height: 8px;
+    background-color: rgb(0, 81, 255);
+    border-radius: 5px;
+}
+
+.linea-recta2 {
+    width: 210px;
+    height: 8px;
+    background-color: rgb(182, 191, 211);
+    border-radius: 5px;
+}
+
+.explica-box {
+    width: 700px;
+    height: 350px;
+    /* border: 1px solid black; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 700;
+}
+
+.upload-btn:hover {
+  background: #1d4ed8;
+}
+
+.box-1 {
+    width: 330px;
+    height: fit-content;
+    /* border: 1px solid black; */
+    text-align: center;
+}
+
+.back-box {
+    background-color: rgb(214, 236, 255);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    width: 480px;
+    height: 180px;
+}
+
+.but-pass {
+    padding: 12px 20px;
+    background: #4d81f3;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    border: none;
+    font-size: 16px;
+}
+
+.but-pass:hover {
+    background-color: rgb(80, 173, 255);
+    transition: 0.3s;
+}
+
+.btn-revisio {
+    width: 150px;
+    height: 50px;
+    background-color: rgb(224, 201, 171);
+    font-weight: 700;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-revisio:hover {
+    background-color: blanchedalmond;
+    transition: 0.3s;
+}
+
+.btn-revisio1 {
+    width: 150px;
+    height: 50px;
+    font-weight: 700;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(168, 226, 207);
+}
+
+.btn-revisio1:hover {
+    background-color: aquamarine;
+    transition: 0.3s;
+}
