@@ -161,18 +161,49 @@
         // 👇 SOLO UNA VEZ Y AL FINAL
         checkUser()
     </script>
-
-
     <script>
-        const response = await fetch("../api/groq", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                cv: cv
-            })
-        });
+        async function corregirCV() {
+
+            const cv = document.getElementById("cvInput").value;
+            const resultado = document.getElementById("resultado");
+            const btn = document.getElementById("btn");
+
+            if (!cv.trim()) {
+                resultado.innerHTML = "⚠️ Escribe un CV primero";
+                return;
+            }
+
+            btn.disabled = true;
+            resultado.innerHTML = "⏳ Analizando CV...";
+
+            try {
+
+                const response = await fetch("/api/groq", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        cv: cv
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    resultado.innerHTML = "❌ Error: " + data.error.message;
+                    return;
+                }
+
+                resultado.innerHTML = data.choices?.[0]?.message?.content || "❌ Sin respuesta";
+
+            } catch (error) {
+                console.log(error);
+                resultado.innerHTML = "❌ Error conectando con la IA";
+            }
+
+            btn.disabled = false;
+        }
     </script>
     <script>
         const BtnN = document.getElementById("net-but")
