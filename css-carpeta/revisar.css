@@ -58,7 +58,7 @@ textarea::-webkit-scrollbar {
     height: fit-content;
     padding: 15px;
     cursor: pointer;
-    background-color: rgb(0, 153, 255);
+    background-color: rgb(255, 0, 242);
     color: white;
     border: none;
     border-radius: 10px;
@@ -67,7 +67,7 @@ textarea::-webkit-scrollbar {
 }
 
 .btn-3:hover {
-    background-color: rgb(255, 75, 225);
+    background-color: rgb(0, 153, 255);
     transition: 0.2s ease;
 }
 
