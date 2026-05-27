@@ -162,6 +162,7 @@
         checkUser()
     </script>
     <script>
+                // ===== FUNCIÓN PRINCIPAL =====
         async function corregirCV() {
 
             const cv = document.getElementById("cvInput").value;
@@ -188,14 +189,18 @@
                     })
                 });
 
-                const data = await response.json();
+                // 🔥 evitar crash si el backend falla
+                const text = await response.text();
+                const data = text ? JSON.parse(text) : {};
 
                 if (data.error) {
                     resultado.innerHTML = "❌ Error: " + data.error.message;
+                    btn.disabled = false;
                     return;
                 }
 
-                resultado.innerHTML = data.choices?.[0]?.message?.content || "❌ Sin respuesta";
+                resultado.innerHTML =
+                    data.choices?.[0]?.message?.content || "❌ Sin respuesta";
 
             } catch (error) {
                 console.log(error);
@@ -204,6 +209,12 @@
 
             btn.disabled = false;
         }
+
+
+        // ===== LIMPIAR RESULTADO =====
+        document.getElementById("net-but").addEventListener("click", () => {
+            document.getElementById("resultado").innerHTML = "";
+        });
     </script>
     <script>
         const BtnN = document.getElementById("net-but")
