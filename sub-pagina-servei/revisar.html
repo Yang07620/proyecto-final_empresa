@@ -162,120 +162,18 @@
         checkUser()
     </script>
 
+
     <script>
-
-        // ===== FUNCIÓN PRINCIPAL =====
-        async function corregirCV() {
-
-            // Captura el texto del CV escrito por el usuario
-            const cv = document.getElementById("cvInput").value;
-
-            // Zona donde mostraremos la respuesta
-            const resultado = document.getElementById("resultado");
-
-            // Botón (para desactivarlo mientras carga)
-            const btn = document.getElementById("btn");
-
-            // Si el CV está vacío
-            if(!cv.trim()){
-            resultado.innerHTML = "⚠️ Escribe un CV primero";
-            return; // corta la función
-            }
-
-            // Desactiva botón mientras carga
-            btn.disabled = true;
-
-            // Mensaje de carga
-            resultado.innerHTML = "⏳ Analizando CV...";
-
-            try {
-
-            // ===== LLAMADA A LA API DE GROQ =====
-            const response = await fetch(
-                "https://api.groq.com/openai/v1/chat/completions",
-                {
-                method: "POST", // tipo de petición
-
-                headers: {
-                    "Content-Type": "application/json", // formato JSON
-
-                    // API KEY (autenticación)
-                    "Authorization": "Bearer"
-                },
-
-                body: JSON.stringify({
-
-                    // Modelo de IA que usamos
-                    model: "llama-3.3-70b-versatile",
-
-                    // Mensajes enviados a la IA
-                    messages: [
-
-                    {
-                        role: "system",
-                        content: `
-        Eres un recruiter senior experto en CVs y ATS.
-
-        Tu tarea es mejorar CVs para que consigan entrevistas.
-
-        IMPORTANTE:
-        Devuelve EXACTAMENTE este formato:
-
-        1. CV MEJORADO (solo el CV, sin explicaciones)
-
-        2. ERRORES DETECTADOS (lista corta)
-
-        3. MEJORAS (lista corta y accionable)
-
-        Reglas:
-        - No incluyas frases como "recomiendo"
-        - No expliques dentro del CV
-        - Hazlo profesional y claro
-                        `
-                    },
-
-                    {
-                        role: "user",
-                        content: cv // CV del usuario
-                    }
-                    ]
-                })
-                }
-            );
-
-            // Convierte respuesta a JSON
-            const data = await response.json();
-
-            // Muestra respuesta en consola (debug)
-            console.log(data);
-
-            // Si la API devuelve error
-            if(data.error){
-                resultado.innerHTML = "❌ Error: " + data.error.message;
-                btn.disabled = false; // activa botón otra vez
-                return;
-            }
-
-            // Si la respuesta es correcta
-            if(data.choices && data.choices[0]){
-                resultado.innerHTML = data.choices[0].message.content;
-            } else {
-                resultado.innerHTML = "❌ Respuesta inválida";
-            }
-
-            } catch (error) {
-
-            // Si falla la conexión
-            console.log(error);
-            resultado.innerHTML = "❌ Error conectando con la IA";
-            }
-
-            // Reactiva el botón al final
-            btn.disabled = false;
-        }
-
+        const response = await fetch("../api/groq", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                cv: cv
+            })
+        });
     </script>
-
     <script>
         const BtnN = document.getElementById("net-but")
         const resultado = document.getElementById("resultado")

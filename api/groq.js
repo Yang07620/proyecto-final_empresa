@@ -1,32 +1,38 @@
 export default async function handler(req, res) {
-  try {
-    const response = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "llama3-70b-8192",
-          messages: [
-            {
-              role: "user",
-              content: "Hola"
-            }
-          ]
-        }),
-      }
-    );
 
-    const data = await response.json();
+  const { cv } = req.body;
 
-    res.status(200).json(data);
+  const response = await fetch(
+    "https://api.groq.com/openai/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [
+          {
+            role: "system",
+            content: `
+Eres un recruiter senior experto en CVs y ATS.
+Devuelve:
+1. CV mejorado
+2. Errores
+3. Mejoras
+            `
+          },
+          {
+            role: "user",
+            content: cv
+          }
+        ]
+      })
+    }
+  );
 
-  } catch (error) {
-    res.status(500).json({
-      error: error.message
-    });
-  }
+  const data = await response.json();
+
+  res.status(200).json(data);
 }
