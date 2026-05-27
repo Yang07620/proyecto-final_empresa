@@ -67,7 +67,7 @@ textarea::-webkit-scrollbar {
 }
 
 .btn-3:hover {
-    background-color: rgb(75, 204, 255);
+    background-color: rgb(255, 75, 225);
     transition: 0.2s ease;
 }
 
