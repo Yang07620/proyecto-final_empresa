@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar</title>
+    <!-- Fulls d'estil del login/registre i utilitats de layout -->
     <link rel="stylesheet" href="../css-carpeta/login.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Botó per tornar a la pàgina de login -->
     <a href="login.html">
         <img src="../img/img-login/chevron-a-la-izquierda (1).png" alt="" class="volver-img">
     </a>
+
+    <!-- Contenidor centrat del formulari de registre -->
     <div class="display-flex ali-center just-center container-form">
         <div class="panel-login-re display-flex column ali-center just-center gap-20">
             <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
             <span class="Inter-F color-gris">Crear la teva compte</span>
+
+            <!-- ===== FORMULARI DE REGISTRE ===== -->
             <form action="" class="display-flex column gap-30 ali-center">
                 <div class="display-flex column gap-20">
+                    <!-- Camp de nom d'usuari -->
                     <div class="button-proveidor display-flex ali-center just-center gap-10">
                         <label for="nom-user">
                             <img src="../img/img-login/editar.png" alt="" class="pad-4">
@@ -30,6 +37,7 @@
                         <input type="text" id="nom-user" placeholder="Nom d'usuari" class="Inter-F input-box">
                     </div>
 
+                    <!-- Camp d'email -->
                     <div class="button-proveidor display-flex ali-center just-center gap-10">
                         <label for="email-re">
                             <img src="../img/img-login/correo.png" alt="" class="pad-4">
@@ -37,6 +45,7 @@
                         <input type="email" id="email-re" placeholder="Adreça de correu electrònic" class="Inter-F input-box">
                     </div>
 
+                    <!-- Camp de contrasenya -->
                     <div class="button-proveidor display-flex ali-center just-center gap-10">
                         <label for="password-re">
                             <img src="../img/img-login/ojo-cerrado.png" alt="" class="pad-4">
@@ -44,55 +53,73 @@
                         <input type="password" id="password-re" placeholder="Contrasenya" class="Inter-F input-box">
                     </div>
                 </div>
-                    
+
+                <!-- Botó de creació de compte (type="button" evita el submit per defecte) -->
                 <button onclick="registrar()" type="button" class="btn-sessio">Crear</button>
-                
             </form>
         </div>
     </div>
 
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Biblioteca de Supabase (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Client de Supabase configurat (exposa window.client) -->
     <script src="../supabase.js"></script>
 
     <script>
+        /**
+         * registrar()
+         * Crea un nou compte d'usuari a Supabase en dos passos:
+         *  1. Registra l'usuari a Supabase Auth (email + password)
+         *  2. Insereix el nom d'usuari a la taula "profiles"
+         *
+         * Si l'email necessita confirmació, avisa l'usuari.
+         * Si hi ha error guardant el perfil, informa però no bloqueja el procés.
+         */
         async function registrar() {
-        const username = document.getElementById("nom-user").value;
-        const email = document.getElementById("email-re").value;
-        const password = document.getElementById("password-re").value;
+            // Llegeix els valors dels camps del formulari
+            const username = document.getElementById("nom-user").value;
+            const email = document.getElementById("email-re").value;
+            const password = document.getElementById("password-re").value;
 
-        const { data, error } = await client.auth.signUp({
-            email,
-            password
-        });
+            // Pas 1: Crea l'usuari a Supabase Auth
+            const { data, error } = await client.auth.signUp({
+                email,
+                password
+            });
 
-        if (error) {
-            alert(error.message);
-            return;
-        }
-
-        const user = data?.user;
-
-        if (!user) {
-            alert("Revisa tu email para confirmar la cuenta");
-            return;
-        }
-
-        const { error: errorProfile } = await client
-            .from("profiles")
-            .insert([
-            {
-                id: user.id,
-                username: username
+            if (error) {
+                alert(error.message);
+                return;
             }
-            ]);
 
-        if (errorProfile) {
-            console.error(errorProfile);
-            alert("Usuario creado pero error guardando perfil");
-        } else {
-            alert("Usuario creado correctamente");
-            window.location.href = "login.html";
-        }
+            const user = data?.user;
+
+            // Si Supabase no retorna l'usuari, és que necessita confirmació per email
+            if (!user) {
+                alert("Revisa tu email para confirmar la cuenta");
+                return;
+            }
+
+            // Pas 2: Guarda el nom d'usuari a la taula "profiles"
+            // L'id de la fila ha de coincidir amb el UUID de l'usuari autenticat
+            const { error: errorProfile } = await client
+                .from("profiles")
+                .insert([
+                    {
+                        id: user.id,        // UUID de l'usuari a Supabase Auth
+                        username: username  // Nom d'usuari triat
+                    }
+                ]);
+
+            if (errorProfile) {
+                console.error(errorProfile);
+                alert("Usuario creado pero error guardando perfil");
+            } else {
+                alert("Usuario creado correctamente");
+                // Redirigeix al login per iniciar sessió amb el nou compte
+                window.location.href = "login.html";
+            }
         }
     </script>
 </body>

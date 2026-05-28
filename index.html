@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JobReadyCV</title>
+    <!-- Fulls d'estil: disseny principal, utilitats de layout i navegació/peu -->
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="css-carpeta/display.css">
     <link rel="stylesheet" href="css-carpeta/contenidos-pag/nav-footer.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts (Inter i Rubik) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- ===== NAVEGACIÓ PRINCIPAL ===== -->
     <nav class="display-flex space-bet ali-center">
+        <!-- Logo: clica per tornar a l'inici -->
         <a href=""><img src="img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
+        <!-- Salutació personalitzada: s'actualitza amb JS segons si l'usuari ha iniciat sessió -->
         <span id="user-info" class="Rubik-F">
             Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
         </span>
 
+        <!-- Menú de navegació i botons d'acció -->
         <div class="display-flex space-bet container-list-button">
             <ul class="display-flex gap-50">
                 <li><a href="index.html">Inici</a></li>
@@ -30,7 +35,6 @@
                 <li><a href="sub-pagina-servei/contacte.html">Contacte</a></li>
                 <li><a href="sub-pagina-servei/premium.html">Premium</a></li>
             </ul>
-
             <div class="display-flex gap-10">
                 <button class="but-login"><a href="sub-pagina/login.html">Iniciar</a></button>
                 <button class="but-iniciar"><a href="sub-pagina-servei/crearcv.html">Crear</a></button>
@@ -38,13 +42,15 @@
         </div>
     </nav>
 
+    <!-- ===== SECCIÓ PRINCIPAL (hero) ===== -->
     <main>
         <div>
-
+            <!-- Titular i llista de beneficis del servei -->
             <div class="display-flex column gap-40 titulo-box">
                 <h1 class="Inter-F">COMENÇA CREAR <br>
                 <span class="text-titul1">EL TEU </span>CV AMB <span class="text-titul1">NOSALTRES</span></h1>
 
+                <!-- Llista de punts forts del servei -->
                 <div class="Rubik-F display-flex column gap-10">
                     <div class="display-flex ali-center gap-10">
                         <img src="img/index-img/marca-de-verificacion (4).png" alt="">
@@ -63,21 +69,25 @@
             </div>
         </div>
     </main>
-    
+
+    <!-- ===== SECCIÓ DE PRESENTACIÓ DE SERVEIS ===== -->
     <div class="procesos-box Rubik-F display-flex column ali-center just-center gap-30">
         <h2>Benvinguts a JobReadyCV</h2>
-        <p>Et preparem amb revisió humana i simulacions d’entrevista per augmentar les teves opcions d’aconseguir feina real.</p>
+        <p>Et preparem amb revisió humana i simulacions d'entrevista per augmentar les teves opcions d'aconseguir feina real.</p>
         <p>Optimitzem el teu CV amb IA perquè superi els filtres ATS i arribi a les empreses.</p>
 
+        <!-- Tres cartes de serveis: Revisió IA, Revisió humana i Simulació d'entrevista -->
         <div class="display-flex gap-50">
+            <!-- Carta 1: Revisió amb IA -->
             <div class="box-presenta display-flex column ali-center just-center gap-30" id="carta-1">
                 <img src="img/index-img/robot-corregir.png" alt="" class="robot-img">
                 <div class="display-flex column ali-center gap-10 texto-vincu">
                     <h3>Revisió IA</h3>
-                    <p class="Inter-F">La IA analitza el teu CV i l’optimitza perquè passi els filtres automàtics de les empreses.</p>
+                    <p class="Inter-F">La IA analitza el teu CV i l'optimitza perquè passi els filtres automàtics de les empreses.</p>
                     <p class="Inter-F">Detecta errors, millora paraules clau i el fa més atractiu per a les ofertes de feina.</p>
                 </div>
             </div>
+            <!-- Carta 2: Revisió humana -->
             <div class="box-presenta display-flex column ali-center just-center gap-30" id="carta-2">
                 <img src="img/index-img/humana-corregir.png" alt="" class="robot-img">
                 <div class="display-flex column ali-center gap-10 texto-vincu">
@@ -86,23 +96,27 @@
                     <p class="Inter-F">Et dona feedback personalitzat per millorar el teu perfil i destacar davant altres candidats.</p>
                 </div>
             </div>
+            <!-- Carta 3: Simulació d'entrevista -->
             <div class="box-presenta display-flex column ali-center just-center gap-30" id="carta-3">
                 <img src="img/index-img/simulacio-entrevista.png" alt="" class="robot-img2">
                 <div class="display-flex column ali-center gap-10 texto-vincu">
                     <h3>Simulació d'entrevista</h3>
                     <p class="Inter-F">Practiques entrevistes reals amb professionals per guanyar confiança i seguretat.</p>
-                    <p class="Inter-F">Rep feedback immediat per millorar respostes i augmentar les teves possibilitats d’èxit.</p>
+                    <p class="Inter-F">Rep feedback immediat per millorar respostes i augmentar les teves possibilitats d'èxit.</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- ===== PEU DE PÀGINA ===== -->
     <footer class="display-flex gap-20 ali-center space-bet">
+        <!-- Descripció breu de la plataforma -->
         <div class="Rubik-F display-flex column gap-10 text-box-footer2">
             <p class="Inter-F">Assistent professional</p>
             <h3>AI CV EDITOR</h3>
             <p>Plataforma pensada per a ajudar-te a millorar el teu currículum, preparar-te per a entrevistes i avançar amb més seguretat en la teva carrera professional.</p>
         </div>
+        <!-- Columnes del footer: Serveis, Contacte, Xarxes socials -->
         <div class="display-flex gap-20 Rubik-F">
             <div class="carta-footer display-flex column just-center">
                 <div class="display-flex column gap-20 text-box-footer">
@@ -154,69 +168,85 @@
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Biblioteca de Supabase (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Client de Supabase configurat -->
     <script src="supabase.js"></script>
+    <!-- Funció getUserProfile() -->
     <script src="auth.js"></script>
 
     <script>
+        /**
+         * checkUser()
+         * Comprova si l'usuari ha iniciat sessió i actualitza
+         * el missatge de salutació a la barra de navegació.
+         *
+         * Tres estats possibles:
+         *  1. No autenticat → mostra enllaç a "iniciar sessió"
+         *  2. Autenticat però sense username → redirigeix a completar registre
+         *  3. Tot correcte → mostra el nom d'usuari amb enllaç al perfil
+         */
         async function checkUser() {
-        const userInfo = document.getElementById("user-info");
+            const userInfo = document.getElementById("user-info");
 
-        const user = await getUserProfile();
+            // Obté la sessió i el perfil de l'usuari
+            const user = await getUserProfile();
 
-        // 1. No logueado
-        if (!user) {
+            // Cas 1: Usuari NO autenticat
+            if (!user) {
+                userInfo.innerHTML = `
+                Hola  <a href="sub-pagina/login.html">iniciar sessió</a>!
+                `;
+                return;
+            }
+
+            // Cas 2: Autenticat però sense nom d'usuari
+            if (!user.username) {
+                userInfo.innerHTML = `
+                Hola  <a href="sub-pagina/registrar2.html">usuari sense nom</a>
+                `;
+                return;
+            }
+
+            // Cas 3: Tot correcte → mostra el username
             userInfo.innerHTML = `
-            Hola  <a href="sub-pagina/login.html">iniciar sessió</a>!
+                Hola <a href="sub-pagina/userprofile.html">${user.username}</a>!
             `;
-            return;
         }
 
-        // 2. Logueado pero sin username
-        if (!user.username) {
-            userInfo.innerHTML = `
-            Hola  <a href="sub-pagina/registrar2.html">usuari sense nom</a>
-            `;
-            return;
-        }
-
-        // 3. Todo OK
-        userInfo.innerHTML = `
-            Hola <a href="sub-pagina/userprofile.html">${user.username}</a>!
-        `;
-        }
-
+        // Executa la comprovació quan es carrega la pàgina
         checkUser();
     </script>
 
     <script>
+        // ===== EFECTE HOVER DE LES CARTES DE SERVEIS =====
+        // Quan el ratolí passa per sobre d'una carta, li afegeix una vora
+        // de color (border-carta-bajo) i la treu de les altres dues.
+
+        // Seleccionem les tres cartes pel seu id
         const carta1 = document.querySelector("#carta-1")
-        console.log(carta1)
+        const carta2 = document.querySelector("#carta-2")
+        const carta3 = document.querySelector("#carta-3")
 
+        // Carta 1: activa el border propi i desactiva els de les altres
         carta1.addEventListener("mouseover", borderbajo1)
-
         function borderbajo1() {
             carta2.classList.remove("border-carta-bajo")
             carta3.classList.remove("border-carta-bajo")
             carta1.classList.add("border-carta-bajo")
         }
 
-        const carta2 = document.querySelector("#carta-2")
-        console.log(carta2)
-
+        // Carta 2: activa el border propi i desactiva els de les altres
         carta2.addEventListener("mouseover", borderbajo2)
-
         function borderbajo2() {
             carta1.classList.remove("border-carta-bajo")
             carta3.classList.remove("border-carta-bajo")
             carta2.classList.add("border-carta-bajo")
         }
 
-        const carta3 = document.querySelector("#carta-3")
-        console.log(carta3)
-
+        // Carta 3: activa el border propi i desactiva els de les altres
         carta3.addEventListener("mouseover", borderbajo3)
-
         function borderbajo3() {
             carta1.classList.remove("border-carta-bajo")
             carta2.classList.remove("border-carta-bajo")

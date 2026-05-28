@@ -4,46 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sessió</title>
+    <!-- Fulls d'estil del login i utilitats de layout -->
     <link rel="stylesheet" href="../css-carpeta/login.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Botó de tornar enrere a la pàgina principal -->
     <a href="../index.html">
         <img src="../img/img-login/chevron-a-la-izquierda (1).png" alt="" class="volver-img">
     </a>
+
+    <!-- Contenidor centrat del formulari de login -->
     <div class="display-flex ali-center just-center container-form">
         <div class="panel-login display-flex column ali-center just-center gap-20">
             <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
 
             <span class="Inter-F color-gris pad-10-right">Iniciar ràpida</span>
 
+            <!-- ===== BOTONS DE LOGIN AMB PROVEÏDORS EXTERNS (OAuth) ===== -->
             <div class="button-login-menu display-flex ali-center column space-bet">
-                <!-- Login amb Github (Supabase) -->
+                <!-- Login amb GitHub via Supabase OAuth -->
                 <button onclick="login()" class="button-proveidor display-flex ali-center just-center gap-20">
-                    <img src="../img/img-login/github.png" alt="" id="logo-github-login"><span class="mida-text">Continuar amb GitHub</span>
+                    <img src="../img/img-login/github.png" alt="" id="logo-github-login">
+                    <span class="mida-text">Continuar amb GitHub</span>
                 </button>
 
-                <!-- Login amb Discord (Supabase) -->
+                <!-- Login amb Discord via Supabase OAuth -->
                 <button onclick="loginDiscord()" class="button-proveidor display-flex ali-center just-center gap-20">
-                    <img src="../img/img-login/discordia.png" alt=""><span class="mida-text">Continuar amb Discord</span>
+                    <img src="../img/img-login/discordia.png" alt="">
+                    <span class="mida-text">Continuar amb Discord</span>
                 </button>
 
-                <!-- Login amb X (Supabase) -->
-                <button onclick="loginX()"class="button-proveidor display-flex ali-center just-center gap-20">
-                    <img src="../img/img-login/gorjeo (1).png" alt=""><span class="mida-text">Continuar amb X</span>
+                <!-- Login amb X (Twitter) via Supabase OAuth -->
+                <button onclick="loginX()" class="button-proveidor display-flex ali-center just-center gap-20">
+                    <img src="../img/img-login/gorjeo (1).png" alt="">
+                    <span class="mida-text">Continuar amb X</span>
                 </button>
             </div>
-            
+
             <span class="Inter-F color-gris">Amb una compte</span>
 
+            <!-- ===== FORMULARI DE LOGIN AMB EMAIL I CONTRASENYA ===== -->
             <form action="" class="display-flex column gap-30 ali-center">
                 <div class="display-flex column gap-20">
+                    <!-- Camp d'email -->
                     <div class="button-proveidor display-flex ali-center just-center gap-10">
                         <label for="user-mail">
                             <img src="../img/img-login/correo.png" alt="" class="pad-4">
@@ -51,6 +61,7 @@
                         <input type="email" class="Inter-F input-box" placeholder="Adreça de correu electrònic" id="user-mail">
                     </div>
 
+                    <!-- Camp de contrasenya -->
                     <div class="button-proveidor display-flex ali-center just-center gap-10">
                         <label for="user-pass">
                             <img src="../img/img-login/ojo-cerrado.png" alt="" class="pad-4">
@@ -59,23 +70,31 @@
                     </div>
                 </div>
 
+                <!-- Enllaços d'ajuda: registrar compte nova o recuperar contrasenya -->
                 <div class="container-link Inter-F display-flex gap-20">
                     <a href="../sub-pagina/registrar.html">Registrar</a>
                     <a href="#">Oblidar la contrasenya</a>
                 </div>
 
+                <!-- Botó d'inici de sessió (type="button" per evitar submit natiu del formulari) -->
                 <button type="button" onclick="loginEmail()" class="btn-sessio">Iniciar sessió</button>
             </form>
         </div>
     </div>
 
-
-    <!-- Vinculació a supabase-->
-     
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Biblioteca de Supabase (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+    <!-- Client de Supabase configurat (exposa window.client) -->
     <script src="../supabase.js"></script>
+
     <script>
+        /**
+         * login()
+         * Inicia sessió amb GitHub via OAuth de Supabase.
+         * Redirigeix l'usuari a GitHub i, un cop autenticat,
+         * torna a index.html.
+         */
         async function login() {
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'github',
@@ -83,10 +102,13 @@
                     redirectTo: window.location.origin + "/index.html"
                 }
             })
-
             if (error) console.log(error)
         }
 
+        /**
+         * loginDiscord()
+         * Inicia sessió amb Discord via OAuth de Supabase.
+         */
         async function loginDiscord() {
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'discord',
@@ -94,10 +116,13 @@
                     redirectTo: window.location.origin + "/index.html"
                 }
             })
-
             if (error) console.log(error)
         }
 
+        /**
+         * loginX()
+         * Inicia sessió amb X (Twitter) via OAuth de Supabase.
+         */
         async function loginX() {
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: 'x',
@@ -105,22 +130,30 @@
                     redirectTo: window.location.origin + "/index.html"
                 }
             })
-
             if (error) console.log(error)
         }
 
+        /**
+         * loginEmail()
+         * Inicia sessió amb email i contrasenya usant Supabase Auth.
+         * Mostra un alert si hi ha error, o redirigeix a index.html si va bé.
+         */
         async function loginEmail() {
+            // Llegeix els valors dels camps del formulari
             const email = document.querySelector('input[type="email"]').value
             const password = document.querySelector('input[type="password"]').value
 
+            // Crida a Supabase per autenticar l'usuari
             const { data, error } = await client.auth.signInWithPassword({
                 email: email,
                 password: password
             })
 
             if (error) {
+                // Mostra l'error a l'usuari (p.ex. "Invalid credentials")
                 alert("Error: " + error.message)
             } else {
+                // Login correcte → redirigeix a la pàgina principal
                 window.location.href = "../index.html"
             }
         }

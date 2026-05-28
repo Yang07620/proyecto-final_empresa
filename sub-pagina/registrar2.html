@@ -4,31 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar</title>
+    <!-- Fulls d'estil del login/registre i utilitats de layout -->
     <link rel="stylesheet" href="../css-carpeta/login.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Botó per tornar a la pàgina de login -->
     <a href="login.html">
         <img src="../img/img-login/chevron-a-la-izquierda (1).png" alt="" class="volver-img">
     </a>
+
+    <!-- Contenidor centrat del formulari -->
     <div class="display-flex ali-center just-center container-form">
         <div class="panel-login-re display-flex column ali-center just-center gap-20">
             <h2>Benvinguts al Job<span class="ready">Ready</span><span class="cv">CV</span></h2>
             <span class="Inter-F color-gris">El teu nom</span>
+
+            <!--
+                Formulari per completar el perfil d'usuaris que han entrat
+                via OAuth (GitHub, Discord, X) i encara no tenen username.
+                Apareix quan getUserProfile() detecta username = null.
+            -->
             <form action="" class="display-flex column gap-30 ali-center">
                 <div class="display-flex column gap-20 ali-center">
+                    <!-- Camp per triar el nom d'usuari -->
                     <div class="button-proveidor display-flex ali-center just-center gap-10">
                         <label for="nom-user">
                             <img src="../img/img-login/editar.png" alt="" class="pad-4">
                         </label>
                         <input type="text" id="nom-user" placeholder="Nom d'usuari" class="Inter-F input-box">
                     </div>
+
+                    <!-- Botó per guardar el nom (type="button" evita el submit natiu) -->
                     <button type="button" class="btn-sessio" onclick="guardarUsername()">
                         Crear
                     </button>
@@ -36,40 +49,60 @@
             </form>
         </div>
     </div>
-    
+
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Biblioteca de Supabase (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+    <!-- Client de Supabase configurat (exposa window.client) -->
     <script src="../supabase.js"></script>
+
     <script>
+        /**
+         * guardarUsername()
+         * Guarda o actualitza el nom d'usuari al perfil de l'usuari autenticat.
+         * S'usa quan l'usuari ha entrat via OAuth i encara no té username assignat.
+         *
+         * Flux:
+         *  1. Comprova que el camp no estigui buit
+         *  2. Verifica que hi hagi sessió activa
+         *  3. Fa un upsert a la taula "profiles" (insereix o actualitza si ja existeix)
+         *  4. Redirigeix a la pàgina principal
+         */
         async function guardarUsername() {
-        const username = document.getElementById("nom-user").value;
+            const username = document.getElementById("nom-user").value;
 
-        if (!username) {
-            alert("Es obligatorio poner username");
-            return;
-        }
+            // Validació: el nom és obligatori
+            if (!username) {
+                alert("Es obligatorio poner username");
+                return;
+            }
 
-        const { data: { session } } = await client.auth.getSession();
+            // Obté la sessió activa de l'usuari
+            const { data: { session } } = await client.auth.getSession();
 
-        if (!session) {
-            window.location.href = "login.html";
-            return;
-        }
+            // Si no hi ha sessió, redirigeix al login (per seguretat)
+            if (!session) {
+                window.location.href = "login.html";
+                return;
+            }
 
-        const user = session.user;
+            const user = session.user;
 
-        const { error } = await client
-            .from("profiles")
-            .upsert({
-            id: user.id,
-            username: username
-            });
+            // Upsert: insereix una nova fila o actualitza la que ja existeix per aquest id
+            // Útil quan l'usuari arriba via OAuth i el perfil pot estar parcialment creat
+            const { error } = await client
+                .from("profiles")
+                .upsert({
+                    id: user.id,        // UUID de l'usuari autenticat
+                    username: username  // Nom d'usuari triat
+                });
 
-        if (error) {
-            alert(error.message);
-        } else {
-            window.location.href = "../index.html";
-        }
+            if (error) {
+                alert(error.message);
+            } else {
+                // Perfil complet → torna a la pàgina principal
+                window.location.href = "../index.html";
+            }
         }
     </script>
 </body>

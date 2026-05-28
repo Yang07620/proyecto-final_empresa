@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium</title>
+    <!-- Fulls d'estil: navegació/peu, premium, utilitats de layout -->
     <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
     <link rel="stylesheet" href="../css-carpeta/premium.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- ===== NAVEGACIÓ PRINCIPAL ===== -->
     <nav class="display-flex space-bet ali-center">
         <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
+        <!-- Salutació personalitzada: s'actualitza amb checkUser() -->
         <span id="user-info" class="Rubik-F">
             Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
         </span>
@@ -30,7 +33,6 @@
                 <li><a href="contacte.html">Contacte</a></li>
                 <li><a href="premium.html">Premium</a></li>
             </ul>
-
             <div class="display-flex gap-10">
                 <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
                 <button class="but-iniciar"><a href="">Crear</a></button>
@@ -38,53 +40,51 @@
         </div>
     </nav>
 
+    <!-- ===== CONTINGUT PRINCIPAL ===== -->
     <main>
         <div class="display-flex column just-center ali-center gap-50 Inter-F">
             <h1>Transformant coneixement en impacte real i resultats mesurables.</h1>
 
             <button class="but-crear-premium"><a href="">Crear el meu CV</a></button>
 
+            <!-- ===== TRES PLANS DE PREU ===== -->
+            <!--
+                Cada plan té dos botons: "Beneficis" i "Abans de registrar".
+                En fer clic, el JS substitueix la llista d'ítems (#ul-info-premiumX)
+                amb el contingut corresponent (beneficis o condicions legals).
+                La classe "but-premium-info-border-js" marca el botó actiu.
+            -->
             <div class="display-flex gap-30 ali-center">
+
+                <!-- ===== PLA SETMANAL (7 dies — 10.99€) ===== -->
                 <div class="menu-preu-premium display-flex ali-center just-center">
                     <div class="mida-premium3 display-flex space-bet column">
                         <p class="titol-menu Inter-F">PLA SETMANAL</p>
-
                         <div>
                             <span class="preu-text Rubik-F">10.99€</span>
                             <span class="Inter-F frase-1">Durant 7 dies</span>
                         </div>
 
+                        <!-- Botons de pestanya: Beneficis / Abans de registrar -->
                         <div class="display-flex gap-20 mida-but-box">
+                            <!-- "Beneficis" actiu per defecte (té la classe border) -->
                             <button class="but-premium-info but-premium-info-border-js" id="ficis-info1">Beneficis</button>
                             <button class="but-premium-info" id="info-regis1">Abans de registrar</button>
                         </div>
-                       
+
+                        <!-- Llista de beneficis del Pla Setmanal (es substitueix amb JS) -->
                         <ul class="display-flex column gap-10 mida-ul-premium" id="ul-info-premium1">
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                                <span>Millora del CV amb IA</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                                <span>Adaptació per oferta de feina</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                                <span>1 simulació d'entrevista</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                                <span>1 revisió humana per CV</span>
-                            </li>
+                            <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>Millora del CV amb IA</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>Adaptació per oferta de feina</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>1 simulació d'entrevista</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>1 revisió humana per CV</span></li>
                         </ul>
 
                         <button class="Rubik-F but-regis-premium">Registrar</button>
                     </div>
                 </div>
 
+                <!-- ===== PLA MENSUAL (30 dies — 30.99€) ===== -->
                 <div class="menu-preu-premium display-flex ali-center just-center">
                     <div class="mida-premium3 display-flex space-bet column">
                         <p class="titol-menu Inter-F">PLA MENSUAL</p>
@@ -93,42 +93,26 @@
                             <span class="Inter-F frase-1">Durant 30 dies</span>
                         </div>
 
+                        <!-- Botons de pestanya: Beneficis / Abans de registrar -->
                         <div class="display-flex gap-20 mida-but-box">
                             <button class="but-premium-info but-premium-info-border-js" id="ficis-info2">Beneficis</button>
                             <button class="but-premium-info" id="info-regis2">Abans de registrar</button>
                         </div>
 
+                        <!-- Llista de beneficis del Pla Mensual (es substitueix amb JS) -->
                         <ul class="display-flex column gap-10 mida-ul-premium" id="ul-info-premium2">
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                                <span>Millora del CV amb IA</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                                <span>Adaptació per oferta de feina</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                                <span>3 simulació d'entrevista</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                                <span>3 revisió humana per CV</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                                <span>Accés a revisors professionals</span>
-                            </li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>Millora del CV amb IA</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>Adaptació per oferta de feina</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>3 simulació d'entrevista</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>3 revisió humana per CV</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>Accés a revisors professionals</span></li>
                         </ul>
 
                         <button class="Rubik-F but-regis-premium">Registrar</button>
                     </div>
                 </div>
 
+                <!-- ===== PLA ANUAL (365 dies — 200.99€) ===== -->
                 <div class="menu-preu-premium display-flex ali-center just-center">
                     <div class="mida-premium3 display-flex space-bet column">
                         <p class="titol-menu Inter-F">PLA ANUAL</p>
@@ -137,55 +121,32 @@
                             <span class="Inter-F frase-1">Durant 365 dies</span>
                         </div>
 
+                        <!-- Botons de pestanya: Beneficis / Abans de registrar -->
                         <div class="display-flex gap-20 mida-but-box">
                             <button class="but-premium-info but-premium-info-border-js" id="ficis-info">Beneficis</button>
                             <button class="but-premium-info" id="info-regis">Abans de registrar</button>
                         </div>
 
+                        <!-- Llista de beneficis del Pla Anual (es substitueix amb JS) -->
                         <ul class="display-flex column gap-10 mida-ul-premium" id="ul-info-premium">
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Millora del CV amb IA</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Adaptació per oferta de feina</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Simulacions il·limitades d’entrevista</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Revisió completa de CV + LinkedIn</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Accés a revisors professionals</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Suport prioritari</span>
-                            </li>
-
-                            <li>
-                                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                                <span>Feedback detallat de cada entrevista simulada</span>
-                            </li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Millora del CV amb IA</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Adaptació per oferta de feina</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Simulacions il·limitades d'entrevista</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Revisió completa de CV + LinkedIn</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Accés a revisors professionals</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Suport prioritari</span></li>
+                            <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Feedback detallat de cada entrevista simulada</span></li>
                         </ul>
 
                         <button class="Rubik-F but-regis-premium">Registrar</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
 
+    <!-- ===== PEU DE PÀGINA ===== -->
     <footer class="display-flex gap-20 ali-center space-bet">
         <div class="Rubik-F display-flex column gap-10 text-box-footer2">
             <p class="Inter-F">Assistent professional</p>
@@ -242,225 +203,156 @@
             </div>
         </div>
     </footer>
+
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../supabase.js"></script>
     <script src="../auth.js"></script>
 
     <script>
+        /**
+         * checkUser()
+         * Comprova si l'usuari ha iniciat sessió i actualitza la salutació.
+         */
         async function checkUser() {
             const userInfo = document.getElementById("user-info")
-
             const user = await getUserProfile()
 
             if (!user) {
-                userInfo.innerHTML = `
-                    Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
-                `
+                userInfo.innerHTML = `Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!`
                 return
             }
-
             if (!user.username) {
                 window.location.href = "../sub-pagina/registrar2.html"
                 return
             }
-
-            userInfo.innerHTML = `
-                Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
-            `
+            userInfo.innerHTML = `Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!`
         }
-
-        // 👇 SOLO UNA VEZ Y AL FINAL
         checkUser()
     </script>
 
+    <!-- ===== LÒGICA DE PESTANYES DEL PLA ANUAL ===== -->
     <script>
+        /**
+         * Botons "Beneficis" / "Abans de registrar" del PLA ANUAL (#ul-info-premium)
+         *
+         * canbiartexto()  → mostra les condicions legals (text pla sense icones)
+         * canbiarFicis()  → torna a mostrar la llista de beneficis amb icones
+         *
+         * En cada acció, s'afegeix/treu la classe "but-premium-info-border-js"
+         * per marcar visualment quin botó és l'actiu.
+         */
         const infoRegistrar = document.querySelector("#info-regis")
-        console.log(infoRegistrar)
+        const ulinfo        = document.querySelector("#ul-info-premium")
+        const infoFicis     = document.querySelector("#ficis-info")
 
-        const ulinfo = document.querySelector("#ul-info-premium")
-        console.log (ulinfo)
-
+        // Clic a "Abans de registrar" → mostra condicions
         infoRegistrar.addEventListener("click", canbiartexto)
-
-        function canbiartexto(){
+        function canbiartexto() {
             infoFicis.classList.remove("but-premium-info-border-js")
             infoRegistrar.classList.add("but-premium-info-border-js")
-
             ulinfo.innerHTML = `
-            <li>- Simulacions il·limitades amb ús raonable</li>
-            <li>- Alguns experts premium requereixen pagament addicional</li>
-            <li>- Serveis subjectes a disponibilitat</li>
-            <li>- Sessions i revisions extra disponibles amb cost addicional</li>
-            <li>- Prioritat segons el pla contractat</li>
+                <li>- Simulacions il·limitades amb ús raonable</li>
+                <li>- Alguns experts premium requereixen pagament addicional</li>
+                <li>- Serveis subjectes a disponibilitat</li>
+                <li>- Sessions i revisions extra disponibles amb cost addicional</li>
+                <li>- Prioritat segons el pla contractat</li>
             `
         }
 
-        const infoFicis = document.querySelector("#ficis-info")
-        console.log(infoFicis)
-
+        // Clic a "Beneficis" → torna als beneficis amb icones
         infoFicis.addEventListener("click", canbiarFicis)
-
-        function canbiarFicis(){
+        function canbiarFicis() {
             infoRegistrar.classList.remove("but-premium-info-border-js")
             infoFicis.classList.add("but-premium-info-border-js")
-
             ulinfo.innerHTML = `
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Millora del CV amb IA</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Adaptació per oferta de feina</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Simulacions il·limitades d’entrevista</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Revisió completa de CV + LinkedIn</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Accés a revisors professionals</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Suport prioritari</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (2).png" alt="">
-                <span>Feedback detallat de cada entrevista simulada</span>
-            </li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Millora del CV amb IA</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Adaptació per oferta de feina</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Simulacions il·limitades d'entrevista</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Revisió completa de CV + LinkedIn</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Accés a revisors professionals</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Suport prioritari</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (2).png" alt=""><span>Feedback detallat de cada entrevista simulada</span></li>
             `
         }
-
     </script>
 
-    <!-- -------------------- -->
-
+    <!-- ===== LÒGICA DE PESTANYES DEL PLA SETMANAL ===== -->
     <script>
+        /**
+         * Botons "Beneficis" / "Abans de registrar" del PLA SETMANAL (#ul-info-premium1)
+         * Mateix patró que el Pla Anual però per als elements amb sufix "1".
+         */
         const infoRegistrar1 = document.querySelector("#info-regis1")
-        console.log(infoRegistrar1)
+        const ulinfo1        = document.querySelector("#ul-info-premium1")
+        const infoFicis1     = document.querySelector("#ficis-info1")
 
-        const ulinfo1 = document.querySelector("#ul-info-premium1")
-        console.log (ulinfo1)
-
+        // Clic a "Abans de registrar" → mostra condicions
         infoRegistrar1.addEventListener("click", canbiartexto1)
-
-        function canbiartexto1(){
+        function canbiartexto1() {
             infoFicis1.classList.remove("but-premium-info-border-js")
             infoRegistrar1.classList.add("but-premium-info-border-js")
-
             ulinfo1.innerHTML = `
-            <li>- Simulacions il·limitades amb ús raonable</li>
-            <li>- Alguns experts premium requereixen pagament addicional</li>
-            <li>- Serveis subjectes a disponibilitat</li>
-            <li>- Sessions i revisions extra disponibles amb cost addicional</li>
-            <li>- Prioritat segons el pla contractat</li>
+                <li>- Simulacions il·limitades amb ús raonable</li>
+                <li>- Alguns experts premium requereixen pagament addicional</li>
+                <li>- Serveis subjectes a disponibilitat</li>
+                <li>- Sessions i revisions extra disponibles amb cost addicional</li>
+                <li>- Prioritat segons el pla contractat</li>
             `
         }
 
-        const infoFicis1 = document.querySelector("#ficis-info1")
-        console.log(infoFicis1)
-
+        // Clic a "Beneficis" → torna als beneficis amb icones
         infoFicis1.addEventListener("click", canbiarFicis1)
-
-        function canbiarFicis1(){
+        function canbiarFicis1() {
             infoRegistrar1.classList.remove("but-premium-info-border-js")
             infoFicis1.classList.add("but-premium-info-border-js")
-
             ulinfo1.innerHTML = `
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                <span>Millora del CV amb IA</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                <span>Adaptació per oferta de feina</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                <span>1 simulació d'entrevista</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion.png" alt="">
-                <span>1 revisió humana per CV</span>
-            </li>
+                <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>Millora del CV amb IA</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>Adaptació per oferta de feina</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>1 simulació d'entrevista</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion.png" alt=""><span>1 revisió humana per CV</span></li>
             `
         }
     </script>
 
-    <!-- ---------------------------------------- -->
-
+    <!-- ===== LÒGICA DE PESTANYES DEL PLA MENSUAL ===== -->
     <script>
+        /**
+         * Botons "Beneficis" / "Abans de registrar" del PLA MENSUAL (#ul-info-premium2)
+         * Mateix patró que els plans anteriors però per als elements amb sufix "2".
+         */
         const infoRegistrar2 = document.querySelector("#info-regis2")
-        console.log(infoRegistrar2)
+        const ulinfo2        = document.querySelector("#ul-info-premium2")
+        const infoFicis2     = document.querySelector("#ficis-info2")
 
-        const ulinfo2 = document.querySelector("#ul-info-premium2")
-        console.log (ulinfo2)
-
+        // Clic a "Abans de registrar" → mostra condicions
         infoRegistrar2.addEventListener("click", canbiartexto2)
-
-        function canbiartexto2(){
+        function canbiartexto2() {
             infoFicis2.classList.remove("but-premium-info-border-js")
             infoRegistrar2.classList.add("but-premium-info-border-js")
-
             ulinfo2.innerHTML = `
-            <li>- Simulacions il·limitades amb ús raonable</li>
-            <li>- Alguns experts premium requereixen pagament addicional</li>
-            <li>- Serveis subjectes a disponibilitat</li>
-            <li>- Sessions i revisions extra disponibles amb cost addicional</li>
-            <li>- Prioritat segons el pla contractat</li>
+                <li>- Simulacions il·limitades amb ús raonable</li>
+                <li>- Alguns experts premium requereixen pagament addicional</li>
+                <li>- Serveis subjectes a disponibilitat</li>
+                <li>- Sessions i revisions extra disponibles amb cost addicional</li>
+                <li>- Prioritat segons el pla contractat</li>
             `
         }
 
-        const infoFicis2 = document.querySelector("#ficis-info2")
-        console.log(infoFicis2)
-
+        // Clic a "Beneficis" → torna als beneficis amb icones
         infoFicis2.addEventListener("click", canbiarFicis2)
-
-        function canbiarFicis2(){
+        function canbiarFicis2() {
             infoRegistrar2.classList.remove("but-premium-info-border-js")
             infoFicis2.classList.add("but-premium-info-border-js")
-
             ulinfo2.innerHTML = `
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                <span>Millora del CV amb IA</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                <span>Adaptació per oferta de feina</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                <span>3 simulació d'entrevista</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                <span>3 revisió humana per CV</span>
-            </li>
-
-            <li>
-                <img src="../img/img-premium/marca-de-verificacion (1).png" alt="">
-                <span>Accés a revisors professionals</span>
-            </li>
+                <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>Millora del CV amb IA</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>Adaptació per oferta de feina</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>3 simulació d'entrevista</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>3 revisió humana per CV</span></li>
+                <li><img src="../img/img-premium/marca-de-verificacion (1).png" alt=""><span>Accés a revisors professionals</span></li>
             `
         }
     </script>
+
 </body>
 </html>

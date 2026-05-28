@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrevista</title>
+    <!-- Fulls d'estil: entrevista, utilitats de layout, navegació/peu -->
     <link rel="stylesheet" href="../css-carpeta/entrevista.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
     <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- ===== NAVEGACIÓ PRINCIPAL ===== -->
     <nav class="display-flex space-bet ali-center">
         <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
+        <!-- Salutació personalitzada: s'actualitza amb checkUser() -->
         <span id="user-info" class="Rubik-F">
             Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
         </span>
@@ -30,7 +33,6 @@
                 <li><a href="../sub-pagina-servei/contacte.html">Contacte</a></li>
                 <li><a href="../sub-pagina-servei/premium.html">Premium</a></li>
             </ul>
-
             <div class="display-flex gap-10">
                 <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
                 <button class="but-iniciar"><a href="sub-pagina-servei/crearcv.html">Crear</a></button>
@@ -38,15 +40,20 @@
         </div>
     </nav>
 
+    <!-- ===== CONTINGUT PRINCIPAL ===== -->
     <main class="display-flex just-center ali-center column gap-40">
+
+        <!-- Capçalera visual: imatge i representació dels dos participants de l'entrevista -->
         <div>
             <img src="../img/img-entrevista/tamano-completo.png" alt="" id="completar">
             <div class="Inter-F back-box-entrevista display-flex ali-center just-center">
                 <div class="display-flex gap-10">
+                    <!-- Avatar de l'entrevistador -->
                     <div class="llama-back display-flex column ali-center gap-10 just-center">
                         <img src="../img/img-entrevista/usuario.png" alt="">
                         <p>Entrevistador</p>
                     </div>
+                    <!-- Avatar del candidat (l'usuari) -->
                     <div class="llama-back display-flex column ali-center gap-10 just-center">
                         <img src="../img/img-entrevista/usuario.png" alt="">
                         <p>Usuari (client)</p>
@@ -55,20 +62,28 @@
             </div>
         </div>
 
+        <!-- Panell informatiu i de selecció de categoria -->
         <div class="info-box-entrevista display-flex gap-30">
+
+            <!-- ===== PANELL ESQUERRE: connexió i selecció de categoria ===== -->
             <div class="box-total-left">
+
+                <!-- Formulari de connexió amb codi i PIN (per entrar a una entrevista) -->
                 <div class="menu-infor Rubik-F display-flex column gap-20">
                     <div>
                         <p class="pad-5-left">INTRODUEIX EL CODI</p>
+                        <!-- Camp per al codi d'accés a la sessió d'entrevista -->
                         <input type="text" class="input-infor">
                     </div>
                     <div>
                         <p class="pad-5-left">PIN</p>
+                        <!-- Camp per al PIN de seguretat -->
                         <input type="password" class="input-infor">
                     </div>
                     <button class="Inter-F">CONECTAR</button>
                 </div>
 
+                <!-- Selector de categoria professional per filtrar l'entrevistador -->
                 <select name="" id="select-cat" class="Rubik-F select-panel">
                     <option value="" disabled selected>Seleccionar categories</option>
                     <option value="tec-inf">Tecnologia i informàtica</option>
@@ -78,39 +93,40 @@
                     <option value="dis-cre">Disseny i creativitat</option>
                 </select>
 
+                <!-- Llegenda dels estats dels entrevistadors (colors dels punts) -->
                 <div class="Rubik-F">
                     <div class="display-flex gap-10 ali-center">
                         <img src="../img/img-entrevista/puntos.png" alt=""> En línia
                     </div>
-
                     <div class="display-flex gap-10 ali-center">
                         <img src="../img/img-entrevista/puntos (1).png" alt=""> Fora de línia
                     </div>
-
                     <div class="display-flex gap-10 ali-center">
                         <img src="../img/img-entrevista/puntos (2).png" alt=""> En l'entrevista
                     </div>
                 </div>
 
-                 <p class="Rubik-F">Números d'entrevista:</p>
+                <p class="Rubik-F">Números d'entrevista:</p>
 
-                 <div class="preguntas-panel Inter-F">
+                <!-- Preguntes freqüents d'ajuda per a l'usuari -->
+                <div class="preguntas-panel Inter-F">
                     <h3>Preguntes freqüents</h3>
-                    <a href="">Vull fer més simulació d'entrevista</a>
-                    <a href="">Què significa etiqueta?</a>
-                    <a href="">Com puc fer entrevista?</a>
-                    <a href="">Tinc problema sobre entrevista</a>
-                 </div>
+                    <a href="premium.html">Vull fer més simulació d'entrevista</a>
+                    <a href="contacte.html">Tinc problema sobre entrevista</a>
+                </div>
             </div>
 
+            <!-- ===== PANELL DRET: mostra la carta de l'entrevistador seleccionat ===== -->
+            <!-- S'omple dinàmicament amb JS en funció de la categoria triada al select -->
             <div class="box-right-total">
                 <div id="div-inf">
-                
+                    <!-- El contingut s'insereix aquí per camviarCategories() -->
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- ===== PEU DE PÀGINA ===== -->
     <footer class="display-flex gap-20 ali-center space-bet">
         <div class="Rubik-F display-flex column gap-10 text-box-footer2">
             <p class="Inter-F">Assistent professional</p>
@@ -168,16 +184,22 @@
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../supabase.js"></script>
     <script src="../auth.js"></script>
 
     <script>
+        /**
+         * checkUser()
+         * Comprova si l'usuari ha iniciat sessió i actualitza la salutació.
+         * Si l'usuari autenticat no té username, el redirigeix a completar el perfil.
+         */
         async function checkUser() {
             const userInfo = document.getElementById("user-info")
-
             const user = await getUserProfile()
 
+            // Cas 1: No autenticat → mostra el link per iniciar sessió
             if (!user) {
                 userInfo.innerHTML = `
                     Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
@@ -185,73 +207,69 @@
                 return
             }
 
+            // Cas 2: Autenticat però sense username → redirigeix per completar el perfil
             if (!user.username) {
                 window.location.href = "../sub-pagina/registrar2.html"
                 return
             }
 
+            // Cas 3: Tot correcte → mostra el nom d'usuari amb link al perfil
             userInfo.innerHTML = `
                 Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
             `
         }
 
-        // 👇 SOLO UNA VEZ Y AL FINAL
+        // Executa la comprovació quan es carrega la pàgina
         checkUser()
     </script>
 
     <script>
+        /**
+         * Dades dels entrevistadors disponibles per categoria.
+         * Cada objecte representa un professional amb nom, àmbit i anys d'experiència.
+         * L'ordre coincideix amb les opcions del select (#select-cat):
+         *   [0] tec-inf, [1] sal-med, [2] edu-for, [3] fin-neg, [4] dis-cre
+         */
         const categorias = [
-        {
-            Nombre: "Miquel",
-            Categoria: "Tecnologia i informàtica",
-            Experiencia: "4"
-        },
-        {
-            Nombre: "Juan",
-            Categoria: "Salut i medicina",
-            Experiencia: "3"
-        },
-        {
-            Nombre: "Julian",
-            Categoria: "Educació i formació",
-            Experiencia: "4"
-        },
-        {
-            Nombre: "Manel",
-            Categoria: "Finances i negocis",
-            Experiencia: "3"
-        },
-        {
-            Nombre: "Emma",
-            Categoria: "Disseny i creativitat",
-            Experiencia: "4"
-        }
-    ];
+            { Nombre: "Miquel", Categoria: "Tecnologia i informàtica", Experiencia: "4" },
+            { Nombre: "Juan",   Categoria: "Salut i medicina",          Experiencia: "3" },
+            { Nombre: "Julian", Categoria: "Educació i formació",       Experiencia: "4" },
+            { Nombre: "Manel",  Categoria: "Finances i negocis",        Experiencia: "3" },
+            { Nombre: "Emma",   Categoria: "Disseny i creativitat",     Experiencia: "4" }
+        ];
 
-
+        // Referència al div on es mostra la carta de l'entrevistador
         const MyDiv = document.querySelector("#div-inf")
 
+        // Referència al selector de categories
         const Mysele = document.querySelector("#select-cat")
 
+        // Escolta el canvi de valor del selector i crida camviarCategories()
         Mysele.addEventListener("change", camviarCategories)
 
-        function camviarCategories(){
+        /**
+         * camviarCategories()
+         * Quan l'usuari tria una categoria, insereix la carta de l'entrevistador
+         * corresponent al div #div-inf, incloent la seva foto, nom, categoria i experiència.
+         * La imatge del punt indica l'estat (en línia, fora de línia, en entrevista).
+         */
+        function camviarCategories() {
             if (Mysele.value === "tec-inf") {
-                console.log("tec-inf")
+                // Entrevistador de Tecnologia (Miquel) — estat: en línia (punt verd)
                 MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos.png" alt=""><img src="../img/img-entrevista/hombre.png" alt=""><p>Nom: ${categorias[0].Nombre}</p><p>Categoria: ${categorias[0].Categoria}</p><p>Experiència: ${categorias[0].Experiencia} anys</p></div>`
             } else if (Mysele.value === "sal-med") {
-                console.log("sal-med")
+                // Entrevistador de Salut (Juan) — estat: fora de línia (punt gris)
                 MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos (1).png" alt=""><img src="../img/img-entrevista/medico (1).png" alt=""><p>Nom: ${categorias[1].Nombre}</p><p>Categoria: ${categorias[1].Categoria}</p><p>Experiència: ${categorias[1].Experiencia} anys</p></div>`
             } else if (Mysele.value === "edu-for") {
-                console.log("edu-for")
+                // Entrevistador d'Educació (Julian) — estat: en línia (punt verd)
                 MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos.png" alt=""><img src="../img/img-entrevista/ceo.png" alt=""><p>Nom: ${categorias[2].Nombre}</p><p>Categoria: ${categorias[2].Categoria}</p><p>Experiència: ${categorias[2].Experiencia} anys</p></div>`
             } else if (Mysele.value === "fin-neg") {
-                console.log("fin-neg")
+                // Entrevistador de Finances (Manel) — estat: en entrevista (punt taronja)
                 MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos (2).png" alt=""><img src="../img/img-entrevista/anciano.png" alt=""><p>Nom: ${categorias[3].Nombre}</p><p>Categoria: ${categorias[3].Categoria}</p><p>Experiència: ${categorias[3].Experiencia} anys</p></div>`
             } else if (Mysele.value === "dis-cre") {
-                console.log("dis-cre")
+                // Entrevistadora de Disseny (Emma) — estat: en línia (punt verd)
                 MyDiv.innerHTML = `<div id="div-inf" class="carta-pre Rubik-F"><img src="../img/img-entrevista/puntos.png" alt=""><img src="../img/img-entrevista/mujer (2).png" alt=""><p>Nom: ${categorias[4].Nombre}</p><p>Categoria: ${categorias[4].Categoria}</p><p>Experiència: ${categorias[4].Experiencia} anys</p></div>`
-            } 
+            }
         }
     </script>
 </body>

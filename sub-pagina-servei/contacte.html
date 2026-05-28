@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacte</title>
+    <!-- Fulls d'estil: navegació/peu, utilitats de layout, contacte -->
     <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
     <link rel="stylesheet" href="../css-carpeta/contacte.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -16,9 +17,11 @@
 </head>
 
 <body>
+    <!-- ===== NAVEGACIÓ PRINCIPAL ===== -->
     <nav class="display-flex space-bet ali-center">
         <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
+        <!-- Salutació personalitzada: s'actualitza amb checkUser() -->
         <span id="user-info" class="Rubik-F">
             Hola <a href="sub-pagina/login.html">iniciar sessió</a>!
         </span>
@@ -31,7 +34,6 @@
                 <li><a href="contacte.html">Contacte</a></li>
                 <li><a href="premium.html">Premium</a></li>
             </ul>
-
             <div class="display-flex gap-10">
                 <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
                 <button class="but-iniciar"><a href="">Crear</a></button>
@@ -39,22 +41,33 @@
         </div>
     </nav>
 
+    <!-- ===== FORMULARI DE CONTACTE ===== -->
     <main class="display-flex just-center ali-center">
         <div class="display-flex column gap-20 ali-center box-info-contacte just-center">
             <h1 class="Rubik-F">Contactar amb nosaltres!</h1>
+
+            <!--
+                Formulari de contacte.
+                En enviar (submit), el JS intercepta l'event, llegeix els camps
+                i guarda el missatge a la taula "contactes" de Supabase.
+            -->
             <form action="" class="display-flex column just-center gap-30">
                 <div class="display-flex column gap-20">
+                    <!-- Nom de l'usuari que contacta -->
                     <input type="text" placeholder="El teu nom" id="input-nom">
 
                     <div class="display-flex space-bet gap-10">
+                        <!-- Email per rebre la resposta -->
                         <input type="email" placeholder="El teu mail" id="input-mail" class="input-mail-tel-contacte">
+                        <!-- Telèfon de contacte (opcional) -->
                         <input type="tel" placeholder="El teu número de telèfon" id="input-tel" class="input-mail-tel-contacte">
                     </div>
 
+                    <!-- Selector de la pregunta / tema de consulta -->
                     <select name="" id="form-contacte" class="Inter-F">
                         <option value="select" disabled selected>Seleccionar preguntes</option>
                         <option value="temps">Quant de temps es triga a rebre la resposta del CV?</option>
-                        <option value="entrevista">La simulació d’entrevista es realitza en línia?</option>
+                        <option value="entrevista">La simulació d'entrevista es realitza en línia?</option>
                         <option value="dades">Les meves dades personals estan protegides?</option>
                         <option value="idioma">En quins idiomes es pot fer el servei?</option>
                         <option value="urgent">Hi ha opcions urgents o exprés?</option>
@@ -63,13 +76,17 @@
                 </div>
 
                 <div class="display-flex column gap-20">
+                    <!-- Àrea de text per escriure la pregunta completa -->
                     <textarea name="" id="text-pregunta" placeholder="Escriures la teva pregunta"></textarea>
+
+                    <!-- Botó d'enviament (type="submit" activa el listener de l'event "submit") -->
                     <button type="submit" id="but-contacte">Enviar →</button>
                 </div>
             </form>
         </div>
     </main>
 
+    <!-- ===== PEU DE PÀGINA ===== -->
     <footer class="display-flex gap-20 ali-center space-bet">
         <div class="Rubik-F display-flex column gap-10 text-box-footer2">
             <p class="Inter-F">Assistent professional</p>
@@ -127,43 +144,59 @@
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../supabase.js"></script>
     <script src="../auth.js"></script>
-    
+
     <script>
+        /**
+         * Listener de l'enviament del formulari de contacte.
+         * Intercep el submit natiu (e.preventDefault) per evitar la recàrrega de pàgina,
+         * llegeix tots els camps i guarda el missatge a la taula "contactes" de Supabase.
+         *
+         * Camps guardats: nom, email, telèfon, pregunta (valor del select), missatge (textarea)
+         */
         document.querySelector("form").addEventListener("submit", async (e) => {
-        e.preventDefault();
+            // Evita que el formulari faci una petició GET/POST nativa al servidor
+            e.preventDefault();
 
-        const nom = document.getElementById("input-nom").value;
-        const email = document.getElementById("input-mail").value;
-        const telefon = document.getElementById("input-tel").value;
-        const pregunta = document.getElementById("form-contacte").value;
-        const missatge = document.getElementById("text-pregunta").value;
+            // Llegeix el valor de cada camp del formulari
+            const nom      = document.getElementById("input-nom").value;
+            const email    = document.getElementById("input-mail").value;
+            const telefon  = document.getElementById("input-tel").value;
+            const pregunta = document.getElementById("form-contacte").value;   // valor del select
+            const missatge = document.getElementById("text-pregunta").value;   // text lliure
 
-        const { error } = await client
-            .from("contactes")
-            .insert([
-            { nom, email, telefon, pregunta, missatge }
-            ]);
+            // Insereix una nova fila a la taula "contactes" de Supabase
+            const { error } = await client
+                .from("contactes")
+                .insert([
+                    { nom, email, telefon, pregunta, missatge }
+                ]);
 
-        if (error) {
-            console.log(error);
-            alert("Error al enviar el formulari");
-        } else {
-            alert("Missatge enviat correctament!");
-            e.target.reset();
-        }
+            if (error) {
+                console.log(error);
+                alert("Error al enviar el formulari");
+            } else {
+                alert("Missatge enviat correctament!");
+                // Neteja tots els camps del formulari després d'enviar
+                e.target.reset();
+            }
         });
-
     </script>
 
     <script>
+        /**
+         * checkUser()
+         * Comprova si l'usuari ha iniciat sessió i actualitza la salutació.
+         * Si l'usuari autenticat no té username, el redirigeix a completar el perfil.
+         */
         async function checkUser() {
             const userInfo = document.getElementById("user-info")
-
             const user = await getUserProfile()
 
+            // Cas 1: No autenticat → mostra link al login
             if (!user) {
                 userInfo.innerHTML = `
                     Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
@@ -171,17 +204,19 @@
                 return
             }
 
+            // Cas 2: Autenticat però sense username → redirigeix per completar perfil
             if (!user.username) {
                 window.location.href = "../sub-pagina/registrar2.html"
                 return
             }
 
+            // Cas 3: Tot correcte → mostra el nom d'usuari
             userInfo.innerHTML = `
                 Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
             `
         }
 
-        // 👇 SOLO UNA VEZ Y AL FINAL
+        // Executa la comprovació quan es carrega la pàgina
         checkUser()
     </script>
 </body>

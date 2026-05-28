@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revisar</title>
+    <!-- Fulls d'estil: revisar, utilitats de layout, navegació/peu -->
     <link rel="stylesheet" href="../css-carpeta/revisar.css">
     <link rel="stylesheet" href="../css-carpeta/display.css">
     <link rel="stylesheet" href="../css-carpeta/contenidos-pag/nav-footer.css">
 
-    <!-- FONTS -->
+    <!-- FONTS de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- ===== NAVEGACIÓ PRINCIPAL ===== -->
     <nav class="display-flex space-bet ali-center">
         <a href=""><img src="../img/index-img/transparent-logo.png" alt="" id="logo"></a>
 
+        <!-- Salutació personalitzada: s'actualitza amb JS -->
         <span id="user-info" class="Rubik-F">
             Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
         </span>
@@ -30,7 +33,6 @@
                 <li><a href="../sub-pagina-servei/contacte.html">Contacte</a></li>
                 <li><a href="../sub-pagina-servei/premium.html">Premium</a></li>
             </ul>
-
             <div class="display-flex gap-10">
                 <button class="but-login"><a href="../sub-pagina/login.html">Iniciar</a></button>
                 <button class="but-iniciar"><a href="sub-pagina-servei/crearcv.html">Crear</a></button>
@@ -38,42 +40,49 @@
         </div>
     </nav>
 
+    <!-- ===== CONTINGUT PRINCIPAL ===== -->
     <main class="display-flex just-center column ali-center gap-40">
+
+        <!-- Bloc 1: Entrada del CV per analitzar -->
         <div class="box-completo">
             <div class="display-flex gap-20 ali-center">
                 <img src="../img/img-revisar/aplicacion-de-ia.png" alt="">
                 <h1 class="Inter-F">Revisió amb IA</h1>
             </div>
-            
             <div class="display-flex column gap-30">
+                <!-- Àrea de text on l'usuari enganxa el seu CV -->
                 <textarea id="cvInput" placeholder="Copiar aquí el teu CV..." class="Inter-F"></textarea>
-                <!-- Área donde el usuario pega su CV -->
 
+                <!-- Botó que crida la funció corregirCV() -->
                 <button id="btn" onclick="corregirCV()" class="Inter-F btn-3">
                     Corregir CV
                 </button>
-                <!-- Botón que ejecuta la función JS -->
             </div>
         </div>
 
+        <!-- Bloc 2: Resultat de l'anàlisi de la IA -->
         <div class="box-completo">
             <div class="display-flex gap-20 ali-center">
                 <img src="../img/img-revisar/resultados-de-los-examenes.png" alt="">
                 <h1 class="Inter-F">Resultat corregit</h1>
             </div>
             <div class="display-flex column gap-30">
+                <!-- Div on es mostra la resposta de la IA -->
                 <div class="resultado Inter-F" id="resultado"></div>
-                <!-- Aquí se muestra la respuesta de la IA -->
+
+                <!-- Botó per netejar el resultat mostrat -->
                 <button id="net-but">Netejar</button>
             </div>
         </div>
 
+        <!-- Nota de privacitat -->
         <div class="display-flex gap-10 ali-center Rubik-F">
             <img src="../img/img-revisar/advertencia.png" alt="">
-            <p>No compartim mai les teves dades amb tercers ni les utilitzem per entrenar models d’IA.</p>
+            <p>No compartim mai les teves dades amb tercers ni les utilitzem per entrenar models d'IA.</p>
         </div>
     </main>
 
+    <!-- ===== PEU DE PÀGINA ===== -->
     <footer class="display-flex gap-20 ali-center space-bet">
         <div class="Rubik-F display-flex column gap-10 text-box-footer2">
             <p class="Inter-F">Assistent professional</p>
@@ -131,16 +140,25 @@
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Biblioteca de Supabase (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Client de Supabase configurat -->
     <script src="../supabase.js"></script>
+    <!-- Funció getUserProfile() -->
     <script src="../auth.js"></script>
 
     <script>
+        /**
+         * checkUser()
+         * Comprova si l'usuari ha iniciat sessió i actualitza la salutació.
+         * Si l'usuari autenticat no té username, el redirigeix a completar el perfil.
+         */
         async function checkUser() {
             const userInfo = document.getElementById("user-info")
-
             const user = await getUserProfile()
 
+            // Cas 1: No autenticat → mostra enllaç al login
             if (!user) {
                 userInfo.innerHTML = `
                     Hola <a href="../sub-pagina/login.html">iniciar sessió</a>!
@@ -148,82 +166,92 @@
                 return
             }
 
+            // Cas 2: Autenticat però sense username → redirigeix per completar perfil
             if (!user.username) {
                 window.location.href = "../sub-pagina/registrar2.html"
                 return
             }
 
+            // Cas 3: Tot correcte → mostra el nom d'usuari
             userInfo.innerHTML = `
                 Hola <a href="../sub-pagina/userprofile.html">${user.username}</a>!
             `
         }
 
-        // 👇 SOLO UNA VEZ Y AL FINAL
+        // Executa la comprovació en carregar la pàgina
         checkUser()
     </script>
-    <script>
-                // ===== FUNCIÓN PRINCIPAL =====
-        async function corregirCV() {
 
+    <script>
+        /**
+         * corregirCV()
+         * Funció principal de la pàgina de revisió.
+         * Envia el text del CV a l'endpoint /api/groq (backend Node.js)
+         * i mostra la resposta de la IA (LLaMA 3.3 via Groq) al div #resultado.
+         *
+         * Flux:
+         *  1. Llegeix el text del textarea #cvInput
+         *  2. Valida que no estigui buit
+         *  3. Desactiva el botó i mostra missatge de càrrega
+         *  4. Fa POST a /api/groq amb el CV
+         *  5. Mostra el resultat o un missatge d'error
+         */
+        async function corregirCV() {
             const cv = document.getElementById("cvInput").value;
             const resultado = document.getElementById("resultado");
             const btn = document.getElementById("btn");
 
+            // Validació: no enviar si el camp és buit o només espais
             if (!cv.trim()) {
                 resultado.innerHTML = "⚠️ Escribe un CV primero";
                 return;
             }
 
+            // Desactiva el botó per evitar enviaments múltiples
             btn.disabled = true;
             resultado.innerHTML = "⏳ Analizando CV...";
 
             try {
-
+                // Petició POST al backend (api/groq.js) amb el text del CV
                 const response = await fetch("/api/groq", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        cv: cv
-                    })
+                    body: JSON.stringify({ cv: cv })
                 });
 
-                // 🔥 evitar crash si el backend falla
+                // Llegeix la resposta com a text primer per evitar crash si el body és buit
                 const text = await response.text();
                 const data = text ? JSON.parse(text) : {};
 
+                // Comprova si el backend ha retornat un error
                 if (data.error) {
                     resultado.innerHTML = "❌ Error: " + data.error.message;
                     btn.disabled = false;
                     return;
                 }
 
+                // Mostra el contingut de la resposta de la IA
+                // choices[0].message.content conté el text generat per LLaMA
                 resultado.innerHTML =
                     data.choices?.[0]?.message?.content || "❌ Sin respuesta";
 
             } catch (error) {
+                // Error de xarxa o de parsing JSON
                 console.log(error);
                 resultado.innerHTML = "❌ Error conectando con la IA";
             }
 
+            // Reactiva el botó perquè l'usuari pugui tornar a analitzar
             btn.disabled = false;
         }
 
-
-        // ===== LIMPIAR RESULTADO =====
+        // ===== BOTÓ NETEJAR =====
+        // Esborra el contingut del div de resultats en fer clic
         document.getElementById("net-but").addEventListener("click", () => {
             document.getElementById("resultado").innerHTML = "";
         });
-    </script>
-    <script>
-        const BtnN = document.getElementById("net-but")
-        const resultado = document.getElementById("resultado")
-        BtnN.addEventListener("click", netejar)
-
-        function netejar(){
-            resultado.innerHTML = ""
-        }
     </script>
 </body>
 </html>
