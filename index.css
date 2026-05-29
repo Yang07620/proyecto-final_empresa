@@ -34,7 +34,7 @@ main button {
 }
 
 main button:hover {
-    background-color: #88a5ad;
+    background-color: #8ba5b9;
 }
 
 .text-titul1 {
@@ -91,6 +91,10 @@ main button:hover {
 
 .texto-vincu {
     text-align: center;
+}
+
+#btn-crear a {
+    color: white;
 }
 
 /* ------------------ */
