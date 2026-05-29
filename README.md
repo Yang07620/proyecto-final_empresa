@@ -290,7 +290,23 @@ Preparación final.
 
 - Final
 ## Webgrafía
-adadadad
+
+- Groq API: https://groq.com/
+
+- X API: https://docs.x.com/x-api/introduction
+
+- Discord API: https://docs.discord.com/developers/reference
+
+- GitHub API: https://docs.github.com/es/rest?apiVersion=2026-03-10
+
+- SupaBase: https://supabase.com/
 
 ## Anexos
-adadaad
+
+Anexo 1. Pantalla de la aplicación
+
+![Pantalla de inicio](/read-img/inici.png)
+
+Anexo 2. Pantalla de registrar
+
+![Pantalla de registrar](/read-img/registra.png)
